@@ -171,27 +171,11 @@
         if (attemptSubmitted) return;
         attemptSubmitted = true;
 
-        // FIX: Ensure we always have a userId (anonymous fallback) so /api/attempt is called
-        let userId = localStorage.getItem(LB_KEYS.uid);
-        let displayName = localStorage.getItem(LB_KEYS.name);
+        const userId = localStorage.getItem(LB_KEYS.uid);
+        const displayName = (localStorage.getItem(LB_KEYS.name) || "").trim();
 
-        if (!userId) {
-          const uuid =
-            (window.crypto && typeof window.crypto.randomUUID === "function")
-              ? window.crypto.randomUUID()
-              : ("u_" + Date.now() + "_" + Math.random().toString(16).slice(2));
-
-          userId = uuid;
-          displayName = "Ẩn danh";
-
-          localStorage.setItem(LB_KEYS.uid, userId);
-          localStorage.setItem(LB_KEYS.name, displayName);
-        } else {
-          if (!displayName || !String(displayName).trim()) {
-            displayName = "Ẩn danh";
-            localStorage.setItem(LB_KEYS.name, displayName);
-          }
-        }
+        // Name is required (anonymous disabled). If missing, skip silently.
+        if (!userId || !displayName) return;
 
         const aboveAvg = (score10 >= 5.0) ? 1 : 0;
 
@@ -204,11 +188,24 @@
           aboveAvg
         };
 
-        await fetch("/api/attempt", {
+        const res = await fetch("/api/attempt", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload)
         });
+
+        // If server returns canonical userId (dedup by name), store it
+        if (res.ok) {
+          try {
+            const data = await res.json();
+            if (data && data.ok && data.userId) {
+              localStorage.setItem(LB_KEYS.uid, String(data.userId));
+            }
+            if (data && data.ok && data.displayName) {
+              localStorage.setItem(LB_KEYS.name, String(data.displayName));
+            }
+          } catch (_) {}
+        }
       } catch (e) {
         // Don't break quiz flow
       }
