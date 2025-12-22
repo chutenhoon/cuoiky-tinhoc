@@ -133,11 +133,11 @@
         <div class="field">
           <label class="field-label" for="displayNameInput">Tên của bạn</label>
           <input id="displayNameInput" class="field-input" type="text" maxlength="24" placeholder="VD: Duy Tiến" autocomplete="off" />
-          <div class="field-hint">Không muốn nhập? Chọn <b>Ẩn danh</b>.</div>
+          <div class="field-hint">Nhập tên để tham gia bảng xếp hạng (tối đa 24 ký tự).</div>
+          <div id="idError" class="field-error hidden">Bạn phải nhập tên.</div>
         </div>
 
         <div class="modal-actions">
-          <button class="btn btn-ghost" onclick="IdentityModal.useAnonymous()">Ẩn danh</button>
           <button class="btn btn-primary" onclick="IdentityModal.confirm()">Tiếp tục</button>
         </div>
       </div>
@@ -423,41 +423,24 @@
       position: relative;
     }
     .lb-item.r1 .lb-rank::after{
-  content:"";
-  position:absolute;
-  top:-34px;
-  left:-120px;
-  width:220px;
-  height:120px;
-
-  background:
-    linear-gradient(90deg,
-      transparent 0%,
-      rgba(255,255,255,0.00) 35%,
-      rgba(255,255,255,0.10) 48%,
-      rgba(255,255,255,0.22) 52%,
-      rgba(255,255,255,0.10) 56%,
-      rgba(255,255,255,0.00) 68%,
-      transparent 100%
-    );
-
-  transform: translateX(-180px) rotate(14deg);
-  opacity: 0;
-  filter: blur(0.8px);
-  mix-blend-mode: overlay;
-  pointer-events: none;
-
-  animation: lbShine 5.2s cubic-bezier(.21,.72,.22,.99) infinite;
-}
+      content:"";
+      position:absolute;
+      top:-18px;
+      left:-40px;
+      width: 160px;
+      height: 80px;
+      transform: rotate(12deg);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.10), transparent);
+      animation: lbShine 3.8s ease-in-out infinite;
+      pointer-events:none;
+      opacity: .55;
+    }
     @keyframes lbShine{
-  0%   { transform: translateX(-180px) rotate(14deg); opacity: 0; }
-  10%  { opacity: .55; }
-  32%  { transform: translateX(190px) rotate(14deg); opacity: .22; }
-  40%  { opacity: 0; transform: translateX(260px) rotate(14deg); }
-
-  /* nghỉ để nhìn “luxury”, không quét liên tục */
-  100% { opacity: 0; transform: translateX(260px) rotate(14deg); }
-}
+      0%{ transform: translateX(-40px) rotate(12deg); opacity: 0; }
+      25%{ opacity: .55; }
+      50%{ transform: translateX(120px) rotate(12deg); opacity: .18; }
+      100%{ transform: translateX(220px) rotate(12deg); opacity: 0; }
+    }
 
     /* Rank 2/3: subtle material differences */
     .lb-item.r2 .rank-badge{ background: rgba(220,220,220,0.06); }
@@ -573,6 +556,9 @@
         const input = document.getElementById("displayNameInput");
 
         // Prefill
+        const err = document.getElementById("idError");
+        if (err) err.classList.add("hidden");
+        input.classList.remove("is-invalid");
         const currentName = localStorage.getItem(LB_KEYS.name) || "";
         input.value = (currentName && currentName !== "Ẩn danh") ? currentName : "";
 
@@ -582,6 +568,10 @@
 
       function close() {
         const modal = document.getElementById("idModal");
+        const input = document.getElementById("displayNameInput");
+        const err = document.getElementById("idError");
+        if (err) err.classList.add("hidden");
+        if (input) input.classList.remove("is-invalid");
         modal.classList.add("hidden");
         pendingNext = null;
       }
@@ -613,9 +603,17 @@
       function confirm() {
         ensureId();
         const input = document.getElementById("displayNameInput");
+        const err = document.getElementById("idError");
         const raw = (input.value || "").trim();
 
-        const name = raw.length ? raw : "Ẩn danh";
+        if (!raw.length) {
+          if (err) err.classList.remove("hidden");
+          input.classList.add("is-invalid");
+          input.focus();
+          return;
+        }
+
+        const name = raw.slice(0, 24);
         setName(name);
 
         const next = pendingNext;
@@ -623,15 +621,7 @@
         if (typeof next === "function") next();
       }
 
-      function useAnonymous() {
-        ensureId();
-        setName("Ẩn danh");
-        const next = pendingNext;
-        close();
-        if (typeof next === "function") next();
-      }
-
-      return { open, close, ensureUser, confirm, useAnonymous };
+      return { open, close, ensureUser, confirm };
     })();
 
     // ===================== Leaderboard UI =====================
