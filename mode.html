@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Cấu hình đề thi - Duy Tien</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  
+  <div class="app-container">
+    <nav class="navbar">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-back"><i class="fas fa-chevron-left"></i></a>
+        <span class="nav-title">Cấu hình</span>
+        <div class="nav-placeholder"></div> </div>
+    </nav>
+
+    <main class="content">
+      
+      <div class="header">
+        <h1>Chọn chế độ thi</h1>
+        <p>Hệ thống tự động chấm điểm và lưu kết quả.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-label">TRẮC NGHIỆM (MCQ)</div>
+        
+        <div class="grid-compact">
+          <div class="card-box ripple" onclick="pickClassic(20, 0.5)">
+            <div class="card-top">
+              <i class="fas fa-bolt icon-sm"></i>
+              <span class="pill">Cơ bản</span>
+            </div>
+            <div class="card-main">
+              <div class="big-num">20</div>
+              <div class="unit">Câu hỏi</div>
+            </div>
+            <div class="card-sub">0.5đ / câu</div>
+          </div>
+          
+          <div class="card-box ripple" onclick="pickClassic(40, 0.25)">
+            <div class="card-top">
+              <i class="fas fa-brain icon-sm"></i>
+              <span class="pill pill-outline">Nâng cao</span>
+            </div>
+            <div class="card-main">
+              <div class="big-num">40</div>
+              <div class="unit">Câu hỏi</div>
+            </div>
+            <div class="card-sub">0.25đ / câu</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">CẤU TRÚC HỖN HỢP (MIXED)</div>
+        <p class="section-desc">Kết hợp Trắc nghiệm & Đúng/Sai</p>
+
+        <div class="list-stack">
+          
+          <div class="list-item ripple" onclick="pickMix(12, 0.5, 4)">
+            <div class="li-icon"><i class="fas fa-balance-scale"></i></div>
+            <div class="li-info">
+                <h4>Cân Bằng</h4>
+                <div class="li-meta">12 MCQ • 4 Đ/S</div>
+            </div>
+            <div class="li-stat">
+                <span class="badge-count">16 câu</span>
+                <i class="fas fa-angle-right arrow"></i>
+            </div>
+          </div>
+
+          <div class="list-item ripple" onclick="pickMix(16, 0.5, 2)">
+            <div class="li-icon"><i class="fas fa-stream"></i></div>
+            <div class="li-info">
+                <h4>MCQ Chủ Đạo</h4>
+                <div class="li-meta">16 MCQ • 2 Đ/S</div>
+            </div>
+            <div class="li-stat">
+                <span class="badge-count">18 câu</span>
+                <i class="fas fa-angle-right arrow"></i>
+            </div>
+          </div>
+
+          <div class="list-item ripple" onclick="pickMix(24, 0.25, 4)">
+            <div class="li-icon"><i class="fas fa-fire"></i></div>
+            <div class="li-info">
+                <h4>Thử Thách</h4>
+                <div class="li-meta">24 MCQ • 4 Đ/S</div>
+            </div>
+            <div class="li-stat">
+                <span class="badge-count">28 câu</span>
+                <i class="fas fa-angle-right arrow"></i>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    
+      <!-- Leaderboard (Top 3) -->
+      <section class="leaderboard glass-panel" aria-label="Bảng xếp hạng">
+        <div class="lb-head">
+          <div class="lb-title">Bảng xếp hạng</div>
+          <div class="lb-sub">Top 3 người làm nhiều nhất</div>
+        </div>
+
+        <div id="lbLoading" class="lb-loading">Đang tải...</div>
+
+        <div id="lbEmpty" class="lb-empty hidden">
+          Chưa có dữ liệu. Hãy làm bài để lên top!
+        </div>
+
+        <div id="lbList" class="lb-list hidden"></div>
+      </section>
+
+    </main>
+  </div>
+
+  
+  <!-- Identity Modal -->
+  <div id="idModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="idModalTitle">
+    <div class="modal-card">
+      <div class="modal-top">
+        <div class="modal-title" id="idModalTitle">Nhập tên hiển thị</div>
+        <button class="icon-btn" onclick="IdentityModal.close()" aria-label="Đóng">
+          <i class="fas fa-xmark"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="field">
+          <label class="field-label" for="displayNameInput">Tên của bạn</label>
+          <input id="displayNameInput" class="field-input" type="text" maxlength="24" placeholder="VD: Duy Tiến" autocomplete="off" />
+          <div class="field-hint">Không muốn nhập? Chọn <b>Ẩn danh</b>.</div>
+        </div>
+
+        <div class="modal-actions">
+          <button class="btn btn-ghost" onclick="IdentityModal.useAnonymous()">Ẩn danh</button>
+          <button class="btn btn-primary" onclick="IdentityModal.confirm()">Tiếp tục</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <style>
+    /* --- CSS TINH TẾ (PREMIUM DARK) --- */
+    :root {
+        --bg: #050505;        /* Đen gần tuyệt đối */
+        --surface: #121212;   /* Nền card */
+        --surface-hover: #1E1E1E;
+        --border: rgba(255,255,255,0.08);
+        
+        --text-primary: #EDEDED;
+        --text-secondary: #888888;
+        --accent: #fff;
+        
+        --font-main: 'Inter', sans-serif;
+        --radius: 16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    
+    body {
+        background-color: var(--bg);
+        color: var(--text-primary);
+        font-family: var(--font-main);
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    /* Container giới hạn độ rộng để giống App */
+    .app-container {
+        max-width: 440px; 
+        margin: 0 auto;
+        min-height: 100vh;
+        position: relative;
+        background: var(--bg);
+    }
+
+    /* Navbar tối giản */
+    .navbar {
+        height: 56px;
+        display: flex; align-items: center;
+        padding: 0 16px;
+        position: sticky; top: 0; z-index: 100;
+        background: rgba(5,5,5,0.8);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+    }
+    .nav-inner { width: 100%; display: flex; justify-content: space-between; align-items: center; }
+    .nav-back { color: var(--text-primary); font-size: 16px; width: 32px; height: 32px; display: flex; align-items: center; }
+    .nav-title { font-weight: 600; font-size: 15px; letter-spacing: 0.3px; }
+    .nav-placeholder { width: 32px; }
+
+    /* Nội dung chính */
+    .content { padding: 24px 16px; }
+
+    .header { margin-bottom: 32px; text-align: center; }
+    .header h1 { font-size: 22px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.5px; }
+    .header p { color: var(--text-secondary); font-size: 13px; }
+
+    /* Section Styles */
+    .section { margin-bottom: 32px; }
+    .section-label { 
+        font-size: 11px; font-weight: 700; color: #555; letter-spacing: 1px; margin-bottom: 12px; text-transform: uppercase; 
+    }
+    .section-desc { font-size: 12px; color: var(--text-secondary); margin-bottom: 12px; margin-top: -8px; }
+
+    /* GRID COMPACT (2 Cột) */
+    .grid-compact {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .card-box {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 16px;
+        cursor: pointer;
+        transition: transform 0.1s, background 0.2s;
+        display: flex; flex-direction: column; justify-content: space-between;
+        height: 130px; /* Chiều cao cố định để gọn */
+    }
+    .card-box:active { transform: scale(0.96); background: var(--surface-hover); }
+
+    .card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .icon-sm { font-size: 14px; color: var(--text-secondary); }
+    
+    .pill { 
+        font-size: 9px; font-weight: 600; background: #333; color: #ccc; 
+        padding: 4px 8px; border-radius: 20px; text-transform: uppercase; 
+    }
+    .pill-outline { background: transparent; border: 1px solid #333; }
+
+    .card-main { margin-bottom: auto; } /* Đẩy nội dung lên */
+    .big-num { font-size: 28px; font-weight: 700; line-height: 1; letter-spacing: -1px; }
+    .unit { font-size: 11px; color: var(--text-secondary); margin-top: 2px; }
+    
+    .card-sub { font-size: 11px; color: #666; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 8px; width: 100%; }
+
+    /* LIST STACK (Dạng danh sách) */
+    .list-stack { display: flex; flex-direction: column; gap: 8px; }
+
+    .list-item {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px; /* Bo góc ít hơn card grid */
+        padding: 14px 16px;
+        display: flex; align-items: center;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+    .list-item:active { background: var(--surface-hover); }
+
+    .li-icon { 
+        width: 36px; height: 36px; 
+        background: rgba(255,255,255,0.03); border-radius: 50%; 
+        display: flex; align-items: center; justify-content: center;
+        margin-right: 14px; font-size: 14px; color: var(--text-primary);
+    }
+    
+    .li-info { flex: 1; }
+    .li-info h4 { font-size: 14px; font-weight: 600; margin-bottom: 3px; }
+    .li-meta { font-size: 11px; color: var(--text-secondary); }
+
+    .li-stat { display: flex; align-items: center; gap: 10px; }
+    .badge-count { 
+        font-size: 10px; font-weight: 600; background: rgba(255,255,255,0.1); 
+        padding: 4px 8px; border-radius: 6px; color: #ccc; 
+    }
+    .arrow { font-size: 12px; color: #444; }
+
+    /* Hiệu ứng gợn sóng nhẹ khi click (Optional) */
+    .ripple { position: relative; overflow: hidden; }
+  
+    /* ===================== Leaderboard (Deep Glass) ===================== */
+    .glass-panel{
+      margin-top: 18px;
+      border-radius: 18px;
+      padding: 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .leaderboard .lb-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .leaderboard .lb-title{
+      font-size: 14px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.78);
+      font-weight: 700;
+    }
+    .leaderboard .lb-sub{
+      font-size: 12px;
+      color: rgba(255,255,255,0.45);
+      font-weight: 600;
+    }
+    .lb-loading, .lb-empty{
+      padding: 14px 12px;
+      border-radius: 14px;
+      background: rgba(0,0,0,0.25);
+      border: 1px solid rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.65);
+      font-size: 13px;
+      text-align: center;
+    }
+    .lb-list{
+      display:flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .lb-item{
+      position: relative;
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      padding: 12px 12px;
+      border-radius: 16px;
+      background: rgba(0,0,0,0.28);
+      border: 1px solid rgba(255,255,255,0.07);
+      overflow:hidden;
+    }
+    .lb-item::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: radial-gradient(120% 140% at 12% 0%, rgba(255,255,255,0.10), transparent 55%);
+      pointer-events:none;
+    }
+    .lb-rank .rank-badge{
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight: 800;
+      font-size: 15px;
+      color: rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+    }
+    .lb-meta{
+      flex: 1;
+      min-width: 0;
+    }
+    .lb-name{
+      font-weight: 800;
+      font-size: 14px;
+      color: rgba(255,255,255,0.88);
+      white-space: nowrap;
+      overflow:hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 3px;
+    }
+    .lb-stats{
+      font-size: 12px;
+      color: rgba(255,255,255,0.55);
+      display:flex;
+      align-items:center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .lb-stats .dot{
+      opacity: .6;
+    }
+    .lb-medal{
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      flex-shrink: 0;
+    }
+
+    /* Rank 1: premium metallic + micro-shine (NO glow) */
+    .lb-item.r1{
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(0,0,0,0.32);
+    }
+    .lb-item.r1::after{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      border-radius: 18px;
+      padding: 2px;
+      background: conic-gradient(from 210deg, rgba(255,255,255,0.22), rgba(255,255,255,0.06), rgba(255,255,255,0.16));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events:none;
+      opacity: .65;
+    }
+    .lb-item.r1 .rank-badge{
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.18);
+    }
+    .lb-item.r1 .lb-medal{
+      color: rgba(255,255,255,0.70);
+      border-color: rgba(255,255,255,0.14);
+    }
+    .lb-item.r1 .lb-name{
+      color: rgba(255,255,255,0.95);
+    }
+    .lb-item.r1 .lb-rank{
+      position: relative;
+    }
+    .lb-item.r1 .lb-rank::after{
+  content:"";
+  position:absolute;
+  top:-34px;
+  left:-120px;
+  width:220px;
+  height:120px;
+
+  background:
+    linear-gradient(90deg,
+      transparent 0%,
+      rgba(255,255,255,0.00) 35%,
+      rgba(255,255,255,0.10) 48%,
+      rgba(255,255,255,0.22) 52%,
+      rgba(255,255,255,0.10) 56%,
+      rgba(255,255,255,0.00) 68%,
+      transparent 100%
+    );
+
+  transform: translateX(-180px) rotate(14deg);
+  opacity: 0;
+  filter: blur(0.8px);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+
+  animation: lbShine 5.2s cubic-bezier(.21,.72,.22,.99) infinite;
+}
+    @keyframes lbShine{
+  0%   { transform: translateX(-180px) rotate(14deg); opacity: 0; }
+  10%  { opacity: .55; }
+  32%  { transform: translateX(190px) rotate(14deg); opacity: .22; }
+  40%  { opacity: 0; transform: translateX(260px) rotate(14deg); }
+
+  /* nghỉ để nhìn “luxury”, không quét liên tục */
+  100% { opacity: 0; transform: translateX(260px) rotate(14deg); }
+}
+
+    /* Rank 2/3: subtle material differences */
+    .lb-item.r2 .rank-badge{ background: rgba(220,220,220,0.06); }
+    .lb-item.r3 .rank-badge{ background: rgba(255,180,120,0.05); }
+
+    /* ===================== Modal (Deep Glass) ===================== */
+    .modal-overlay{
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 18px;
+      z-index: 9999;
+    }
+    .modal-card{
+      width: 100%;
+      max-width: 420px;
+      border-radius: 18px;
+      background: rgba(16,16,18,0.75);
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow: 0 22px 70px rgba(0,0,0,0.55);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      overflow:hidden;
+    }
+    .modal-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      padding: 14px 14px 10px 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .modal-title{
+      font-weight: 800;
+      font-size: 15px;
+      color: rgba(255,255,255,0.88);
+    }
+    .icon-btn{
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.75);
+      cursor:pointer;
+    }
+    .icon-btn:active{ transform: scale(0.98); }
+
+    .modal-body{ padding: 14px; }
+    .field{ display:flex; flex-direction:column; gap: 8px; }
+    .field-label{ font-size: 12px; color: rgba(255,255,255,0.62); font-weight: 700; }
+    .field-input{
+      width: 100%;
+      padding: 12px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.88);
+      outline: none;
+      font-weight: 700;
+    }
+    .field-input::placeholder{ color: rgba(255,255,255,0.28); }
+    .field-hint{ font-size: 12px; color: rgba(255,255,255,0.45); }
+
+    .modal-actions{
+      display:flex;
+      gap: 10px;
+      justify-content:flex-end;
+      margin-top: 14px;
+    }
+    .btn{
+      padding: 10px 14px;
+      border-radius: 14px;
+      font-weight: 800;
+      border: 1px solid rgba(255,255,255,0.10);
+      cursor:pointer;
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.82);
+    }
+    .btn:active{ transform: scale(0.99); }
+    .btn-primary{
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.16);
+      color: rgba(255,255,255,0.92);
+    }
+    .btn-ghost{
+      background: transparent;
+    }
+
+    .hidden { display: none !important; }
+
+</style>
+
+  <script src="app.js"></script>
+  <script>
+    // --- LOGIC JS GIỮ NGUYÊN ---
+    
+    // ===================== Leaderboard Identity (User) =====================
+    const LB_KEYS = {
+      uid: "lb_user_id",
+      name: "lb_display_name"
+    };
+
+    const IdentityModal = (function () {
+      let pendingNext = null;
+
+      function open(next) {
+        pendingNext = next || null;
+        const modal = document.getElementById("idModal");
+        const input = document.getElementById("displayNameInput");
+
+        // Prefill
+        const currentName = localStorage.getItem(LB_KEYS.name) || "";
+        input.value = (currentName && currentName !== "Ẩn danh") ? currentName : "";
+
+        modal.classList.remove("hidden");
+        setTimeout(() => input.focus(), 50);
+      }
+
+      function close() {
+        const modal = document.getElementById("idModal");
+        modal.classList.add("hidden");
+        pendingNext = null;
+      }
+
+      function ensureUser(next) {
+        const uid = localStorage.getItem(LB_KEYS.uid);
+        const name = localStorage.getItem(LB_KEYS.name);
+
+        if (uid && name) {
+          next();
+          return;
+        }
+        open(next);
+      }
+
+      function ensureId() {
+        let uid = localStorage.getItem(LB_KEYS.uid);
+        if (!uid) {
+          uid = (crypto && crypto.randomUUID) ? crypto.randomUUID() : (Date.now() + "-" + Math.random().toString(16).slice(2));
+          localStorage.setItem(LB_KEYS.uid, uid);
+        }
+        return uid;
+      }
+
+      function setName(name) {
+        localStorage.setItem(LB_KEYS.name, name);
+      }
+
+      function confirm() {
+        ensureId();
+        const input = document.getElementById("displayNameInput");
+        const raw = (input.value || "").trim();
+
+        const name = raw.length ? raw : "Ẩn danh";
+        setName(name);
+
+        const next = pendingNext;
+        close();
+        if (typeof next === "function") next();
+      }
+
+      function useAnonymous() {
+        ensureId();
+        setName("Ẩn danh");
+        const next = pendingNext;
+        close();
+        if (typeof next === "function") next();
+      }
+
+      return { open, close, ensureUser, confirm, useAnonymous };
+    })();
+
+    // ===================== Leaderboard UI =====================
+    async function loadLeaderboard() {
+      const loading = document.getElementById("lbLoading");
+      const empty = document.getElementById("lbEmpty");
+      const list = document.getElementById("lbList");
+
+      try {
+        loading.classList.remove("hidden");
+        empty.classList.add("hidden");
+        list.classList.add("hidden");
+        list.innerHTML = "";
+
+        const res = await fetch("/api/leaderboard?limit=3", { cache: "no-store" });
+        if (!res.ok) throw new Error("leaderboard_fetch_failed");
+        const data = await res.json();
+
+        const top = (data && data.top) ? data.top : [];
+        loading.classList.add("hidden");
+
+        if (!top.length) {
+          empty.classList.remove("hidden");
+          return;
+        }
+
+        top.forEach((row, i) => {
+          const rank = row.rank || (i + 1);
+          const name = row.displayName || "Ẩn danh";
+          const attempts = row.attempts ?? 0;
+          const rate = row.aboveAvgRate ?? 0;
+
+          const el = document.createElement("div");
+          el.className = `lb-item r${rank}`;
+
+          el.innerHTML = `
+            <div class="lb-rank">
+              <div class="rank-badge">${rank}</div>
+            </div>
+            <div class="lb-meta">
+              <div class="lb-name" title="${escapeHtml(name)}">${escapeHtml(name)}</div>
+              <div class="lb-stats">
+                <span><b>${attempts}</b> lượt</span>
+                <span class="dot">•</span>
+                <span><b>${Math.round(rate * 100)}%</b> trên TB</span>
+              </div>
+            </div>
+            <div class="lb-medal">${rank === 1 ? "Vô địch" : (rank === 2 ? "Á quân" : "Hạng ba")}</div>
+          `;
+          list.appendChild(el);
+        });
+
+        list.classList.remove("hidden");
+      } catch (e) {
+        // Fail silently, don't break the page
+        loading.classList.add("hidden");
+        empty.classList.remove("hidden");
+        empty.textContent = "Không tải được bảng xếp hạng.";
+      }
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      loadLeaderboard();
+    });
+
+function pickClassic(count, point) {
+        IdentityModal.ensureUser(() => {
+        App.saveState("mode", { 
+            count: count, 
+            point: point, 
+            isCustom: false,
+            mcqCount: count,
+            tfCount: 0
+        });
+        location.href = "quiz.html";
+        });
+    }
+
+    function pickMix(mcqC, mcqP, tfC) {
+        IdentityModal.ensureUser(() => {
+        App.saveState("mode", { 
+            isCustom: true,
+            mcqCount: mcqC,
+            point: mcqP, 
+            tfCount: tfC,
+            count: mcqC + tfC 
+        });
+        location.href = "quiz.html";
+        });
+    }
+  </script>
+</body>
+</html>

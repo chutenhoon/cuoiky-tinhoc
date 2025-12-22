@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Nhập tên - Duy Tien</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+        --bg: #050505;
+        --surface: #121212;
+        --surface-hover: #1E1E1E;
+        --border: rgba(255,255,255,0.08);
+        --text-primary: #EDEDED;
+        --text-secondary: #888888;
+        --accent: #3ddc97;
+        --font-main: 'Inter', sans-serif;
+        --radius: 16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    body {
+        background-color: var(--bg);
+        color: var(--text-primary);
+        font-family: var(--font-main);
+        font-size: 14px;
+        line-height: 1.4;
+        min-height: 100vh;
+        display: flex; align-items: center; justify-content: center;
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 400px;
+        width: 100%;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 40px 30px;
+        text-align: center;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .title {
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        letter-spacing: -0.5px;
+    }
+
+    .subtitle {
+        font-size: 13px;
+        color: var(--text-secondary);
+        margin-bottom: 32px;
+    }
+
+    .input-group {
+        margin-bottom: 24px;
+        text-align: left;
+    }
+
+    label {
+        display: block;
+        font-size: 12px;
+        color: var(--text-secondary);
+        margin-bottom: 8px;
+        letter-spacing: 0.5px;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 14px 16px;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        color: var(--text-primary);
+        font-size: 15px;
+        outline: none;
+        transition: border 0.3s;
+    }
+
+    input[type="text"]:focus {
+        border-color: var(--accent);
+    }
+
+    .btn-group {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .btn {
+        padding: 14px;
+        border-radius: 12px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        border: none;
+    }
+
+    .btn-primary {
+        background: var(--accent);
+        color: #000;
+    }
+
+    .btn-primary:active {
+        transform: scale(0.98);
+    }
+
+    .btn-ghost {
+        background: transparent;
+        border: 1px solid rgba(255,255,255,0.15);
+        color: var(--text-primary);
+    }
+
+    .btn-ghost:active {
+        background: rgba(255,255,255,0.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">Bạn là ai?</h1>
+    <p class="subtitle">Nhập tên để lưu vào bảng xếp hạng hoặc thi ẩn danh</p>
+
+    <div class="input-group">
+      <label for="username">TÊN CỦA BẠN</label>
+      <input type="text" id="username" placeholder="Ví dụ: Nguyễn Văn A" maxlength="30" />
+    </div>
+
+    <div class="btn-group">
+      <button class="btn btn-primary" id="startBtn">BẮT ĐẦU THI</button>
+      <button class="btn btn-ghost" id="anonymousBtn">THI ẨN DANH</button>
+    </div>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const modeParams = Object.fromEntries(urlParams.entries());
+
+    document.getElementById('startBtn').onclick = function() {
+      let name = document.getElementById('username').value.trim();
+      if (name === '') name = 'Người chơi';
+      localStorage.setItem('quizUsername', name);
+      location.href = 'quiz.html?' + urlParams.toString();
+    };
+
+    document.getElementById('anonymousBtn').onclick = function() {
+      localStorage.setItem('quizUsername', 'Ẩn danh');
+      location.href = 'quiz.html?' + urlParams.toString();
+    };
+
+    // Cho phép Enter để bắt đầu
+    document.getElementById('username').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        document.getElementById('startBtn').click();
+      }
+    });
+  </script>
+</body>
+</html>

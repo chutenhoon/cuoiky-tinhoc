@@ -1,0 +1,628 @@
+:root{
+  --bg:#06070b;
+  --card:rgba(255,255,255,.08);
+  --card2:rgba(255,255,255,.06);
+  --stroke:rgba(255,255,255,.14);
+  --text:rgba(255,255,255,.92);
+  --muted:rgba(255,255,255,.68);
+  --accent:#6ee7ff;
+  --accent2:#9b7bff;
+  --good:#3ddc97;
+  --bad:#ff5c7a;
+  --shadow: 0 20px 60px rgba(0,0,0,.45);
+  --radius:16px;
+  --radius2:22px;
+  --max:1100px;
+  --blur: 18px;
+  --ease: cubic-bezier(.2,.8,.2,1);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+html{background:var(--bg)}
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  /* unified background (same on every page) */
+  background:
+    radial-gradient(1200px 800px at 20% 10%, rgba(120,140,255,.10), transparent 45%),
+    radial-gradient(1000px 700px at 80% 30%, rgba(80,200,180,.10), transparent 50%),
+    radial-gradient(900px 600px at 50% 85%, rgba(155,123,255,.07), transparent 55%),
+    linear-gradient(180deg, #0b0f14, #0b0f14);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+a{color:inherit; text-decoration:none}
+.page-shell{min-height:100%; display:flex; flex-direction:column}
+
+.navbar{
+  position:sticky; top:0; z-index:50;
+  backdrop-filter: blur(var(--blur));
+  -webkit-backdrop-filter: blur(var(--blur));
+  background: linear-gradient(to bottom, rgba(10,12,18,.75), rgba(10,12,18,.35));
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.nav-inner{
+  max-width:var(--max);
+  margin:0 auto;
+  padding:14px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+}
+.logo{
+  font-weight:800;
+  letter-spacing:.6px;
+  display:flex; align-items:center; gap:10px;
+}
+.logo-badge{
+  width:34px; height:34px; border-radius:12px;
+  background: linear-gradient(135deg, rgba(110,231,255,.22), rgba(155,123,255,.22));
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  position:relative;
+}
+.logo-badge:after{
+  content:"";
+  position:absolute; inset:6px;
+  border-radius:10px;
+  background: linear-gradient(135deg, rgba(110,231,255,.55), rgba(155,123,255,.55));
+  filter: blur(.2px);
+  opacity:.9;
+}
+.nav-links{
+  display:flex; align-items:center; gap:10px;
+}
+.nav-links a{
+  padding:10px 12px;
+  border-radius:12px;
+  color:var(--muted);
+  transition: all .25s var(--ease);
+}
+.nav-links a:hover{background:rgba(255,255,255,.06); color:var(--text); transform:translateY(-1px)}
+.mobile-menu-btn{
+  display:none;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.06);
+  color:var(--text);
+  border-radius:12px;
+  padding:10px 12px;
+}
+.mobile-menu{
+  display:none;
+  padding:10px 18px 16px;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.mobile-menu a, .mobile-menu button{
+  display:block;
+  width:100%;
+  text-align:left;
+  margin-top:10px;
+}
+
+.btn{
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.08);
+  color:var(--text);
+  border-radius:14px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:10px 14px;
+  font-weight:700;
+  cursor:pointer;
+  transition: all .25s var(--ease);
+  box-shadow: 0 10px 30px rgba(0,0,0,.20);
+}
+.btn:hover{transform: translateY(-1px); background:rgba(255,255,255,.11)}
+.btn:active{transform: translateY(0px) scale(.99)}
+.btn-primary{
+  border-color: rgba(110,231,255,.35);
+  background: linear-gradient(135deg, rgba(110,231,255,.18), rgba(155,123,255,.14));
+}
+.btn-primary:hover{
+  background: linear-gradient(135deg, rgba(110,231,255,.26), rgba(155,123,255,.20));
+}
+
+.hero{
+  position:relative;
+  min-height: min(86vh, 720px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding: 48px 18px 22px;
+}
+.hero-visual{
+  position:absolute; inset:0;
+  background:
+    radial-gradient(900px 500px at 55% 35%, rgba(255,255,255,.07), transparent 60%),
+    radial-gradient(700px 500px at 65% 55%, rgba(110,231,255,.07), transparent 60%),
+    radial-gradient(900px 600px at 35% 55%, rgba(155,123,255,.06), transparent 60%);
+  pointer-events:none;
+}
+.hero-video{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:cover;
+  opacity:.22;
+  filter: blur(.0px) saturate(1.2) contrast(1.05);
+  transform: scale(1.04);
+}
+.hero:after{
+  content:"";
+  position:absolute; inset:0;
+  background: linear-gradient(to bottom, rgba(6,7,11,.35), rgba(6,7,11,.92));
+}
+.hero-content{
+  position:relative;
+  max-width:var(--max);
+  width:100%;
+  z-index:2;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:14px;
+}
+.hero-title{
+  margin:0;
+  font-size: clamp(28px, 4vw, 54px);
+  line-height:1.03;
+  letter-spacing:.5px;
+}
+.hero-subtitle{
+  margin:0;
+  color:var(--muted);
+  max-width: 680px;
+  font-size: clamp(14px, 2vw, 18px);
+}
+.hero-actions{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+.pill{
+  display:inline-flex; align-items:center; gap:10px;
+  padding:10px 12px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  color:var(--muted);
+  font-weight:650;
+}
+
+.section{padding: 22px 18px calc(40px + env(safe-area-inset-bottom));}
+.section-inner{max-width:var(--max); margin:0 auto;}
+
+.glass-card{
+  background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: var(--radius2);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(var(--blur));
+  -webkit-backdrop-filter: blur(var(--blur));
+  padding: 18px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:14px;
+}
+@media (min-width: 860px){
+  .grid{grid-template-columns: 1.15fr .85fr}
+}
+
+.kv{
+  display:flex; gap:10px; flex-wrap:wrap;
+}
+.kv .tag{
+  padding:8px 10px; border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.05);
+  color: var(--muted);
+  font-weight:650;
+  font-size:13px;
+}
+
+.mode-cards{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:12px;
+  margin-top:12px;
+}
+@media(min-width:680px){
+  .mode-cards{grid-template-columns: 1fr 1fr}
+}
+.mode-card{
+  padding:16px;
+  border-radius: var(--radius2);
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  transition: all .25s var(--ease);
+  cursor:pointer;
+}
+.mode-card:hover{transform:translateY(-2px); background:rgba(255,255,255,.09)}
+.mode-title{margin:0 0 6px; font-size:18px}
+.mode-desc{margin:0; color:var(--muted); font-size:14px}
+
+.quiz-top{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:12px; flex-wrap:wrap;
+}
+.progress{
+  display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+  color:var(--muted);
+  font-weight:650;
+}
+.bar{
+  width:220px; max-width:60vw;
+  height:10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.05);
+  overflow:hidden;
+}
+.bar > i{
+  display:block; height:100%;
+  width:0%;
+  background: linear-gradient(90deg, rgba(110,231,255,.75), rgba(155,123,255,.75));
+  border-radius:999px;
+  transition: width .25s var(--ease);
+}
+
+.qcard{
+  padding:16px;
+  border-radius: var(--radius2);
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+}
+.qhead{display:flex; gap:10px; align-items:flex-start; justify-content:space-between; flex-wrap:wrap}
+.qnum{
+  font-weight:900;
+  letter-spacing:.5px;
+  color: rgba(255,255,255,.86);
+}
+.qtext{margin:8px 0 0; color: rgba(255,255,255,.92); line-height:1.35}
+
+.answers{display:grid; grid-template-columns:1fr; gap:10px; margin-top:12px}
+@media(min-width:720px){ .answers{grid-template-columns:1fr 1fr} }
+
+.choice{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  padding:12px 12px;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.05);
+  transition: all .2s var(--ease);
+  cursor:pointer;
+}
+.choice:hover{transform:translateY(-1px); background:rgba(255,255,255,.08)}
+.choice input{margin-top:3px; accent-color: #8ae9ff;}
+.choice .letter{
+  width:30px; height:30px; border-radius:12px;
+  display:grid; place-items:center;
+  font-weight:900;
+  border:1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+}
+.choice .ctext{color: rgba(255,255,255,.90); line-height:1.35}
+
+.sticky-actions{
+  position:sticky;
+  bottom: calc(12px + env(safe-area-inset-bottom));
+  margin-top:14px;
+  z-index:20;
+}
+.actions-row{
+  display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between;
+}
+.actions-row .left, .actions-row .right{display:flex; gap:10px; flex-wrap:wrap}
+
+/* Mobile: avoid squished buttons and keep a clean, consistent layout */
+@media (max-width: 520px){
+  .actions-row{
+    flex-direction:column;
+    align-items:stretch;
+    justify-content:flex-start;
+    gap:12px;
+  }
+  .actions-row .left,
+  .actions-row .right{
+    width:100%;
+  }
+  .actions-row .left{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:10px;
+  }
+  .actions-row .right .btn,
+  .actions-row .left .btn{
+    width:100%;
+  }
+  .sticky-actions{
+    bottom: calc(10px + env(safe-area-inset-bottom));
+  }
+}
+
+.result{
+  margin-top:12px;
+  padding:14px;
+  border-radius: var(--radius2);
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.05);
+}
+.score{
+  font-size:22px;
+  font-weight:950;
+  margin:0 0 8px;
+  letter-spacing:.2px;
+}
+.muted{color:var(--muted)}
+.badge{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:8px 10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.05);
+  font-weight:800;
+}
+.badge.good{border-color: rgba(61,220,151,.35); background: rgba(61,220,151,.12)}
+.badge.bad{border-color: rgba(255,92,122,.35); background: rgba(255,92,122,.12)}
+
+.hidden{display:none !important}
+
+.footer{
+  margin-top:auto;
+  padding: 18px;
+  color: rgba(255,255,255,.55);
+  font-size:13px;
+}
+.footer .section-inner{display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap}
+
+.fade-in{
+  animation: fadeIn .55s var(--ease) both;
+}
+@keyframes fadeIn{
+  from{opacity:0; transform: translateY(10px)}
+  to{opacity:1; transform: translateY(0)}
+}
+
+@media(max-width: 860px){
+  .nav-links{display:none}
+  .mobile-menu-btn{display:inline-flex}
+  .mobile-menu{display:block}
+}
+/* Mobile: make action buttons fit nicely on ALL phones */
+@media (max-width: 520px){
+  .actions-row{
+    flex-direction:column;
+    align-items:stretch;
+    justify-content:flex-start;
+  }
+  .actions-row .left,
+  .actions-row .right{
+    width:100%;
+  }
+  .actions-row .left{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .actions-row .right{
+    display:block;
+  }
+  .actions-row .btn{
+    width:100%;
+    justify-content:center;
+  }
+}
+
+.reorder-line{
+  margin-bottom:12px;
+  line-height:1.6;
+}
+/* =========================
+   QUIZ PAGE ONLY – FIX BACKGROUND
+   ========================= */
+
+body.quiz-only {
+  background: #070707 !important;
+}
+
+body.quiz-only .page-shell {
+  background: #070707;
+  min-height: 100vh;
+}
+
+/* tắt hoàn toàn nền màu của section */
+body.quiz-only .section {
+  background: transparent;
+}
+.qtext {
+  white-space: pre-line;
+}
+/* ===== FIX CONTACT SECTION BACKGROUND ===== */
+#contact {
+  position: relative;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(6,7,11,0.92) 0%,
+      rgba(10,14,20,0.88) 50%,
+      rgba(6,7,11,0.92) 100%
+    );
+}
+
+/* làm mềm mép trên & dưới */
+#contact::before,
+#contact::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  height: 80px;
+  pointer-events: none;
+}
+
+#contact::before {
+  top: -80px;
+  background: linear-gradient(
+    to bottom,
+    rgba(6,7,11,0),
+    rgba(6,7,11,0.92)
+  );
+}
+
+#contact::after {
+  bottom: -80px;
+  background: linear-gradient(
+    to top,
+    rgba(6,7,11,0),
+    rgba(6,7,11,0.92)
+  );
+}
+/* =========================
+   RESPONSIVE TUNING – ALL PHONES
+   (Fix hero height + spacing so Contact looks balanced)
+   ========================= */
+
+/* 1) Hero: tránh quá cao trên máy thấp chiều cao (vd S8+) */
+@media (max-height: 760px) {
+  .hero{
+    min-height: min(76vh, 620px);
+    padding: 38px 18px 14px;
+  }
+}
+
+/* 2) Hero: tối ưu cho điện thoại nhỏ (giảm khoảng trống + đỡ "lụp chụp") */
+@media (max-width: 520px) {
+  .hero{
+    min-height: min(78vh, 660px);
+    padding: 38px 16px 12px;
+  }
+
+  .hero-content{
+    gap: 12px;
+  }
+
+  .hero-actions{
+    gap: 10px;
+  }
+}
+
+/* 3) Section spacing: để Contact không bị đẩy "tụt đáy" và nhìn cân hơn */
+@media (max-width: 520px) {
+  .section{
+    padding: 16px 16px calc(24px + env(safe-area-inset-bottom));
+  }
+}
+
+/* 4) Contact: nền chuyển mượt, không bị “mảng” lạ giữa các dòng máy */
+#contact{
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    rgba(6,7,11,0.92) 0%,
+    rgba(10,14,20,0.88) 50%,
+    rgba(6,7,11,0.92) 100%
+  );
+}
+
+/* 5) Contact card: full-width đẹp trên phone, nhưng vẫn giới hạn hợp lý trên desktop */
+#contact .section-inner{
+  display: flex;
+  justify-content: center;
+}
+
+#contact .glass-card{
+  width: 100%;
+  max-width: 720px;   /* desktop vẫn đẹp, mobile full */
+}
+
+/* 6) Footer: tránh cảm giác “một cục” và bớt chiếm chỗ trên máy nhỏ */
+@media (max-width: 520px) {
+  .footer{
+    padding: 14px 16px;
+  }
+}
+/* --- styles.css --- */
+
+/* 1. Nới rộng padding cho Glass Card để đỡ bí bách */
+.glass-card, .qcard {
+  padding: 24px; /* Tăng từ 16px/18px lên 24px */
+}
+/* Trên mobile thì giảm một chút nhưng vẫn thoáng hơn cũ */
+@media (max-width: 480px) {
+  .glass-card, .qcard {
+    padding: 20px;
+  }
+}
+
+/* 2. Làm thoáng bảng Đúng/Sai (TF Table) */
+.tf-table {
+  margin-top: 20px; /* Cách xa câu hỏi hơn chút */
+}
+.tf-table th {
+  padding-bottom: 16px; /* Khoảng cách tiêu đề bảng */
+}
+.tf-table td {
+  padding: 18px 10px; /* Tăng padding trên dưới cho mỗi dòng (quan trọng!) */
+  vertical-align: middle; /* Căn giữa theo chiều dọc */
+}
+/* Nới rộng khoảng cách giữa text và nút radio trên mobile */
+.tf-table tr td:first-child {
+    padding-right: 16px; 
+    line-height: 1.5;
+}
+
+/* 3. Làm thoáng các lựa chọn MCQ */
+.choice, .option-item {
+  padding: 16px; /* Tăng padding cho nút chọn */
+  gap: 16px;     /* Tăng khoảng cách giữa chữ cái (A,B,C) và nội dung */
+  margin-bottom: 12px; /* Tăng khoảng cách giữa các đáp án */
+}
+.choice .ctext, .option-item span:last-child {
+    line-height: 1.5; /* Giãn dòng văn bản đáp án cho dễ đọc */
+}
+/* --- styles.css --- */
+
+/* Style mới cho bảng kết quả cuối cùng - Tinh tế hơn */
+.result-card-final {
+  text-align: center;
+  margin-top: 30px;
+  padding: 40px 24px; /* Padding thật lớn tạo cảm giác "grand" */
+  
+  /* Thay viền xanh bằng viền trắng mờ siêu mỏng */
+  border: 1px solid rgba(255, 255, 255, 0.15) !important; 
+  
+  /* Nền sáng hơn một chút xíu so với các card khác để nổi bật nhẹ nhàng */
+  background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.07));
+  
+  /* Hiệu ứng phát sáng nhẹ màu trắng thay vì màu xanh */
+  box-shadow: 0 20px 50px -10px rgba(255, 255, 255, 0.1);
+}
+
+/* Tiêu đề "Hoàn thành" màu trắng thay vì xanh */
+.result-card-final h3 {
+  margin: 0 0 15px 0;
+  font-size: 1.8rem;
+  color: white !important; /* Màu trắng sang trọng */
+  letter-spacing: 0.5px;
+}
+
+/* Dòng điểm số */
+.result-card-final p#resultText {
+    font-size: 1.3rem;
+    color: var(--muted); /* Màu chữ hơi xám để dịu mắt */
+    margin-bottom: 25px;
+}
+
+/* Nút "Làm lượt mới" trong bảng kết quả */
+.result-card-final .btn {
+    padding: 12px 30px;
+    font-size: 1rem;
+    /* Nếu muốn nút nổi bật hơn thì dùng btn-primary, không thì giữ nguyên */
+}
+.question, .question-text, div[role="question"] {
+    white-space: pre-line !important;
+    line-height: 1.6;
+}

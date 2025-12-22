@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Duy Tien - Luyện Trắc Nghiệm</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <meta property="og:title" content="Duy Tien - Luyện Trắc Nghiệm" />
+  <meta property="og:description" content="Luyện Trắc Nghiệm" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/new-banner.png" />
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <div class="video-wrapper">
+        <div class="video-overlay"></div>
+        <video class="bg-video" autoplay muted loop playsinline preload="auto">
+            <source src="video/video.mp4" type="video/mp4" />
+        </video>
+    </div>
+
+    <nav class="navbar">
+      <div class="nav-inner">
+        <div class="logo">
+          <i class="fas fa-cube"></i> Duy Tien
+        </div>
+
+        <div class="desktop-menu">
+            <a href="#hero" class="nav-link">Trang chủ</a>
+            <a href="#about" class="nav-link">Tính năng</a>
+            <a href="#contact" class="nav-link">Liên hệ</a>
+        </div>
+
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+            <i class="fas fa-bars"></i>
+        </button>
+      </div>
+
+      <div class="mobile-menu hidden" id="mobileMenu">
+        <a href="#hero" class="menu-link">Trang chủ</a>
+        <a href="#about" class="menu-link">Hướng dẫn</a>
+        <a href="#contact" class="menu-link">Liên hệ</a>
+      </div>
+    </nav>
+
+    <main class="content-wrapper">
+        
+        <section class="hero" id="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Luyện Thi<br/>Trắc Nghiệm</h1>
+                <p class="hero-desc">
+                    Hệ thống ôn tập. Chấm điểm và xem kết quả ngay lập tức.
+                </p>
+                
+                <div class="action-group">
+                    <a href="mode.html" class="btn btn-primary">
+                        Bắt đầu ngay <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <button class="btn btn-outline" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
+                        Hướng dẫn
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="info-section glass-box" id="about">
+            <div class="info-item">
+                <div class="icon-box">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <div class="text-box">
+                    <h4>Tốc độ</h4>
+                    <p>Chấm điểm tức thì</p>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="info-item">
+                <div class="icon-box">
+                    <i class="fas fa-database"></i>
+                </div>
+                <div class="text-box">
+                    <h4>Đa dạng</h4>
+                    <p>Dữ liệu hên xui nha</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer" id="contact">
+            <p>© 2024 Duy Tien. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="https://www.facebook.com/profile.php?id=61584429791945" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-facebook"></i>
+                </a>
+            </div>
+        </footer>
+
+    </main>
+  </div>
+
+  <style>
+    :root {
+        --bg: #050505;
+        --surface: rgba(20, 20, 20, 0.4);
+        --border: rgba(255, 255, 255, 0.1);
+        --text-main: #EDEDED;
+        --text-sub: #9ca3af;
+        --primary: #ffffff;
+        --font: 'Inter', sans-serif;
+        --max-width-desktop: 1100px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; outline: none; -webkit-tap-highlight-color: transparent; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text-main); font-family: var(--font); overflow-x: hidden; line-height: 1.5; }
+
+    .app-container { width: 100%; min-height: 100vh; display: flex; flex-direction: column; position: relative; }
+
+    /* --- FIX VIDEO BACKGROUND FULL TRANG --- */
+    .video-wrapper {
+        position: fixed; /* Chuyển sang fixed để bám theo toàn màn hình khi cuộn */
+        top: 0; left: 0; width: 100%; height: 100vh;
+        z-index: -1; /* Nằm dưới cùng */
+        pointer-events: none;
+    }
+    .bg-video { 
+        width: 100%; height: 100%; object-fit: cover; 
+        opacity: 0.65; /* Tăng từ 0.5 lên 0.65 để thấy video rõ hơn nữa */
+    }
+    .video-overlay {
+        position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        /* Giảm độ đen của gradient để nhìn xuyên thấu video tốt hơn */
+        background: linear-gradient(180deg, rgba(5,5,5,0.2) 0%, rgba(5,5,5,0.6) 100%);
+        z-index: 1;
+    }
+
+    /* Navbar */
+    .navbar {
+        position: sticky; top: 0; z-index: 100;
+        width: 100%;
+        background: rgba(5, 5, 5, 0.4); /* Giảm độ đục để thấy video phía sau */
+        backdrop-filter: blur(15px);
+        border-bottom: 1px solid var(--border);
+    }
+    .nav-inner { max-width: var(--max-width-desktop); margin: 0 auto; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-weight: 800; font-size: 18px; letter-spacing: -0.5px; display: flex; gap: 10px; align-items: center; color: #fff; }
+    .desktop-menu { display: none; gap: 32px; }
+    .nav-link { color: var(--text-sub); text-decoration: none; font-size: 14px; font-weight: 500; transition: 0.2s; }
+    .nav-link:hover { color: #fff; }
+    .mobile-menu-btn { background: none; border: none; color: #fff; font-size: 20px; cursor: pointer; display: block; }
+
+    .mobile-menu {
+        position: absolute; top: 100%; right: 16px; width: 220px;
+        background: rgba(26, 26, 26, 0.9); border: 1px solid var(--border);
+        border-radius: 12px; padding: 8px; display: flex; flex-direction: column; gap: 4px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.6); opacity: 0; transform: translateY(-10px); 
+        pointer-events: none; transition: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .mobile-menu.active { opacity: 1; transform: translateY(0); pointer-events: all; }
+    .menu-link { padding: 12px 16px; border-radius: 8px; font-size: 14px; color: var(--text-sub); text-decoration: none; }
+
+    /* Content */
+    .content-wrapper { 
+        position: relative; z-index: 2; flex: 1; display: flex; flex-direction: column;
+        width: 100%; max-width: var(--max-width-desktop); margin: 0 auto; padding: 0 24px;
+    }
+
+    .hero { padding: 80px 0 40px 0; text-align: center; display: flex; flex-direction: column; align-items: center; }
+    .hero-title {
+        font-size: 42px; font-weight: 800; line-height: 1.15; margin-bottom: 20px;
+        letter-spacing: -1.5px; color: #fff;
+        text-shadow: 0 2px 15px rgba(0,0,0,0.5);
+    }
+    .hero-desc { font-size: 16px; color: #fff; line-height: 1.6; margin-bottom: 40px; max-width: 500px; text-shadow: 0 1px 5px rgba(0,0,0,0.5); }
+
+    .action-group { display: flex; flex-direction: column; gap: 16px; width: 100%; max-width: 320px; margin: 0 auto; }
+    .btn { height: 52px; display: flex; align-items: center; justify-content: center; gap: 10px; border-radius: 14px; font-size: 15px; font-weight: 600; cursor: pointer; text-decoration: none; transition: 0.2s; }
+    .btn-primary { background: var(--primary); color: #000; border: none; }
+    .btn-outline { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid var(--border); backdrop-filter: blur(5px); }
+
+    .glass-box {
+        background: rgba(30, 30, 30, 0.4); border: 1px solid var(--border);
+        backdrop-filter: blur(12px); border-radius: 20px; padding: 24px;
+        display: flex; align-items: center; justify-content: space-between;
+        margin: 40px auto; width: 100%; max-width: 480px;
+    }
+    .info-item { display: flex; align-items: center; gap: 16px; flex: 1; justify-content: center; }
+    .icon-box { width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #fff; }
+    .text-box h4 { font-size: 14px; font-weight: 600; color: #fff; }
+    .text-box p { font-size: 12px; color: #ddd; }
+    .divider { width: 1px; height: 40px; background: var(--border); }
+
+    .footer { margin-top: auto; padding: 30px 0; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: #ddd; }
+    .social-links { display: flex; gap: 20px; font-size: 18px; }
+    .social-links a { color: #fff; }
+
+    .hidden { display: none; }
+
+    /* Responsive */
+    @media (min-width: 769px) {
+        .mobile-menu-btn { display: none; }
+        .desktop-menu { display: flex; }
+        .hero { padding: 120px 0 60px 0; }
+        .hero-title { font-size: 64px; }
+        .action-group { flex-direction: row; justify-content: center; max-width: none; }
+        .btn { width: 180px; }
+        .glass-box { max-width: 600px; }
+    }
+
+    @media (max-width: 768px) {
+        .hero-title { font-size: 36px; }
+        .footer { flex-direction: column-reverse; gap: 16px; text-align: center; }
+    }
+  </style>
+
+  <script>
+    const btn = document.getElementById('mobileMenuBtn');
+    const menu = document.getElementById('mobileMenu');
+    btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        menu.classList.toggle('hidden');
+        setTimeout(() => menu.classList.toggle('active'), 10);
+    });
+    document.addEventListener('click', (e) => {
+        if (!menu.contains(e.target) && !btn.contains(e.target)) {
+            menu.classList.remove('active');
+            setTimeout(() => menu.classList.add('hidden'), 200);
+        }
+    });
+  </script>
+</body>
+</html>

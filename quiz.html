@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Làm bài - Duy Tien</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="quiz-only">
+  <div class="page-shell">
+    <nav class="navbar" style="background: rgba(6,7,11,0.95); backdrop-filter: blur(25px); border-bottom: 1px solid rgba(255,255,255,0.05); z-index: 100;">
+      <div class="nav-inner">
+        <a href="mode.html" class="btn btn-ghost" style="font-size:12px; opacity: 0.7;">← THOÁT</a>
+        
+        <div class="timer-wrapper">
+            <span class="timer-label">TIME</span>
+            <div id="quizTimer" class="timer-text">00:00</div>
+        </div>
+
+        <button class="btn btn-primary btn-submit-elegant" id="preSubmitBtn" onclick="showConfirmModal()">NỘP BÀI</button>
+      </div>
+      <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </nav>
+
+    <section class="section">
+      <div class="section-inner" id="quizContainer">
+        </div>
+      
+      <div id="finalResult" class="glass-card result-card-final hidden">
+        <div class="result-header">HOÀN THÀNH</div>
+        <div class="result-grid">
+            <div class="res-item">
+                <span class="res-label">ĐIỂM SỐ</span>
+                <span class="res-value" id="resScore">0.00</span>
+            </div>
+            <div class="res-divider"></div>
+            <div class="res-item">
+                <span class="res-label">THỜI GIAN</span>
+                <span class="res-value" id="resTime">00:00</span>
+            </div>
+        </div>
+        <div class="result-actions">
+            <button class="btn btn-primary" onclick="location.reload()">LÀM LƯỢT MỚI</button>
+            <button class="btn btn-ghost" id="filterWrongBtn" onclick="toggleWrongAnswers()" style="margin-top:10px; font-size:12px; border:1px solid rgba(255,255,255,0.2);">
+                <i class="fas fa-filter"></i> CHỈ XEM CÂU SAI
+            </button>
+            <a href="mode.html" class="btn btn-ghost" style="margin-top:10px; display:block; font-size:12px;">QUAY VỀ CHẾ ĐỘ</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div id="confirmModal" class="modal-overlay hidden">
+    <div class="modal-content glass-card">
+      <h3>Nộp bài ngay?</h3>
+      <p style="opacity: 0.7; font-size: 14px; margin: 10px 0 20px;">Bạn có chắc chắn muốn kết thúc bài thi và xem điểm số?</p>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" onclick="closeConfirmModal()">Hủy</button>
+        <button class="btn btn-primary" onclick="handleGrade()">Đồng ý</button>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    /* Custom CSS cho giao diện sang trọng */
+    :root {
+        --glass-border: rgba(255, 255, 255, 0.1);
+        --glass-bg: rgba(255, 255, 255, 0.03);
+        --primary-accent: #3ddc97; /* Màu xanh mint */
+    }
+
+    /* Progress Bar */
+    .progress-container { width: 100%; height: 3px; background: rgba(255,255,255,0.1); position: absolute; bottom: 0; left: 0; }
+    .progress-bar { height: 100%; background: var(--primary-accent); width: 0%; transition: width 0.3s ease; box-shadow: 0 0 10px var(--primary-accent); }
+
+    /* Timer tinh tế */
+    .timer-wrapper { text-align: center; }
+    .timer-label { display: block; font-size: 8px; letter-spacing: 2px; opacity: 0.5; margin-bottom: 2px; }
+    .timer-text { font-family: 'Courier New', monospace; font-size: 1.3rem; font-weight: 200; color: #fff; }
+
+    /* Câu hỏi & Đáp án */
+    .question-card { margin-bottom: 30px; border: 1px solid var(--glass-border); padding: 25px !important; transition: border 0.5s ease; position: relative; }
+    .question-card.unanswered { border-color: rgba(255, 92, 122, 0.4) !important; background: rgba(255, 92, 122, 0.02); }
+    /* Hiệu ứng ẩn câu đúng khi lọc */
+    .question-card.hidden-by-filter { display: none; }
+    
+    .option-item { 
+        display: flex; align-items: flex-start; gap: 15px; padding: 16px; 
+        border-radius: 12px; background: var(--glass-bg); margin-top: 10px; 
+        border: 1px solid transparent; cursor: pointer; transition: 0.3s;
+    }
+    .option-item:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.1); }
+    
+    .option-text-content {
+        font-size: 15px; opacity: 0.9; flex: 1; word-break: break-word; overflow-wrap: anywhere; line-height: 1.4; margin-top: 2px;
+    }
+    .option-label-char { opacity: 0.5; font-size: 13px; font-weight: bold; flex-shrink: 0; margin-top: 3px; }
+
+    /* Feedback tinh tế */
+    .correct-choice { border-color: rgba(61, 220, 151, 0.5) !important; box-shadow: 0 0 15px rgba(61, 220, 151, 0.1); }
+    .wrong-choice { border-color: rgba(255, 92, 122, 0.4) !important; }
+
+    /* Bảng kết quả Luxury */
+    .result-card-final {
+        margin: 40px auto; max-width: 480px; width: 100%;
+        padding: 50px 30px !important; text-align: center;
+        border-radius: 24px; border: 1px solid rgba(255,255,255,0.15) !important;
+        background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%) !important;
+        box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    }
+    .result-header { font-size: 10px; letter-spacing: 5px; opacity: 0.6; margin-bottom: 30px; }
+    .result-grid { display: flex; justify-content: center; align-items: center; gap: 40px; margin-bottom: 40px; }
+    .res-item { display: flex; flex-direction: column; gap: 8px; }
+    .res-label { font-size: 11px; opacity: 0.4; letter-spacing: 1px; }
+    .res-value { font-size: 2.2rem; font-weight: 200; color: #fff; }
+    .res-divider { width: 1px; height: 40px; background: rgba(255,255,255,0.1); }
+
+    /* Bảng Đúng/Sai (TF) */
+    .tf-table { width: 100%; border-collapse: collapse; margin-top: 20px; table-layout: fixed; }
+    .tf-table td { padding: 18px 10px; border-bottom: 1px solid rgba(255,255,255,0.05); vertical-align: top; word-wrap: break-word;}
+    .tag-feedback { font-size: 9px; padding: 2px 8px; border-radius: 4px; border: 1px solid; margin-left: 10px; opacity: 0.8; display: inline-block; margin-top: 5px; }
+    .tag-correct { color: #3ddc97; border-color: rgba(61, 220, 151, 0.3); }
+    .tag-wrong { color: #ff5c7a; border-color: rgba(255, 92, 122, 0.3); }
+
+    .hidden { display: none; }
+    input[type="radio"] { accent-color: var(--primary-accent); transform: scale(1.3); cursor: pointer; margin-right: 5px; flex-shrink: 0; margin-top: 3px; }
+
+    /* Modal Styling */
+    .modal-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8); backdrop-filter: blur(5px);
+      z-index: 999; display: flex; align-items: center; justify-content: center;
+    }
+    .modal-content {
+      width: 90%; max-width: 320px; padding: 25px; text-align: center;
+      background: #1a1a1a; border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+    }
+    .modal-actions { display: flex; gap: 10px; justify-content: center; }
+    .modal-actions button { min-width: 100px; }
+
+  </style>
+
+  <script src="app.js"></script>
+  <script>
+    let seconds = 0;
+    let timer;
+    let questions = [];
+    let mode = App.loadState("mode") || { count: 20, point: 0.5 };
+    let isReviewMode = false; // Biến trạng thái xe
+
+    // ===================== Leaderboard Submit (D1) =====================
+    const LB_KEYS = { uid: "lb_user_id", name: "lb_display_name" };
+    let attemptSubmitted = false;
+
+    function getModeKey() {
+      // Stable key for all modes
+      if (mode && mode.isCustom) {
+        return `mix_${mode.mcqCount}_${mode.point}_${mode.tfCount}`;
+      }
+      const count = (mode && typeof mode.count === "number") ? mode.count : (mode?.mcqCount || 20);
+      const point = (mode && typeof mode.point === "number") ? mode.point : 0.5;
+      return `mcq_${count}_${point}`;
+    }
+
+    async function submitAttemptToLeaderboard(score10) {
+      try {
+        if (attemptSubmitted) return;
+        attemptSubmitted = true;
+
+        // FIX: Ensure we always have a userId (anonymous fallback) so /api/attempt is called
+        let userId = localStorage.getItem(LB_KEYS.uid);
+        let displayName = localStorage.getItem(LB_KEYS.name);
+
+        if (!userId) {
+          const uuid =
+            (window.crypto && typeof window.crypto.randomUUID === "function")
+              ? window.crypto.randomUUID()
+              : ("u_" + Date.now() + "_" + Math.random().toString(16).slice(2));
+
+          userId = uuid;
+          displayName = "Ẩn danh";
+
+          localStorage.setItem(LB_KEYS.uid, userId);
+          localStorage.setItem(LB_KEYS.name, displayName);
+        } else {
+          if (!displayName || !String(displayName).trim()) {
+            displayName = "Ẩn danh";
+            localStorage.setItem(LB_KEYS.name, displayName);
+          }
+        }
+
+        const aboveAvg = (score10 >= 5.0) ? 1 : 0;
+
+        const payload = {
+          userId,
+          displayName,
+          modeKey: getModeKey(),
+          score10: Number(score10),
+          seconds: Number(seconds || 0),
+          aboveAvg
+        };
+
+        await fetch("/api/attempt", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+      } catch (e) {
+        // Don't break quiz flow
+      }
+    }
+
+    async function init() {
+      const data = await App.loadQuestionBank();
+      const mcqs = data.questions.filter(q => q.type !== 'tf');
+      const tfs = data.questions.filter(q => q.type === 'tf');
+
+      if (mode.isCustom) {
+        questions = [...App.shuffle(mcqs).slice(0, mode.mcqCount), ...App.shuffle(tfs).slice(0, mode.tfCount)];
+      } else {
+        questions = App.shuffle(mcqs).slice(0, mode.count);
+      }
+      render();
+      startTimer();
+      updateProgress(); // Khởi tạo progress bar
+    }
+
+    function startTimer() {
+      timer = setInterval(() => {
+        seconds++;
+        const m = Math.floor(seconds/60).toString().padStart(2,'0');
+        const s = (seconds%60).toString().padStart(2,'0');
+        document.getElementById('quizTimer').innerText = `${m}:${s}`;
+      }, 1000);
+    }
+
+    function render() {
+      const container = document.getElementById('quizContainer');
+      container.innerHTML = questions.map((q, i) => {
+        // Thêm sự kiện onclick để cập nhật progress bar ngay lập tức
+        const commonRadioAttr = `onclick="updateProgress()"`;
+        
+        if (q.type === 'tf') {
+          return `
+            <div class="glass-card question-card" id="qc-${i}" data-index="${i}">
+              <div class="question-header"><span class="question-number">CÂU ${i+1}</span></div>
+              <div class="question-text" style="line-height:1.6; margin-top:10px; word-wrap: break-word;">${q.question}</div>
+              <table class="tf-table">
+                <tbody>
+                  ${q.statements.map((s, si) => `
+                    <tr id="tr-${i}-${si}">
+                      <td style="opacity:0.8">${String.fromCharCode(97+si)}. ${s.text}</td>
+                      <td width="40" align="center"><input type="radio" name="tf_${i}_${si}" value="true" ${commonRadioAttr}></td>
+                      <td width="40" align="center"><input type="radio" name="tf_${i}_${si}" value="false" ${commonRadioAttr}></td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>`;
+        } else {
+          return `
+            <div class="glass-card question-card" id="qc-${i}" data-index="${i}">
+              <div class="question-header"><span class="question-number">CÂU ${i+1}</span></div>
+              <div class="question-text" style="margin-top:10px; word-wrap: break-word;">${q.question}</div>
+              <div class="options-grid" style="margin-top:20px;">
+                ${q.choices.map((c, ci) => `
+                  <label class="option-item" id="opt-${i}-${ci}">
+                    <input type="radio" name="mcq_${i}" value="${ci}" ${commonRadioAttr}>
+                    <span class="option-label-char">${String.fromCharCode(65+ci)}</span>
+                    <span class="option-text-content">${c}</span>
+                  </label>
+                `).join('')}
+              </div>
+            </div>`;
+        }
+      }).join('');
+    }
+
+    // --- LOGIC MỚI: Cập nhật thanh tiến độ ---
+    function updateProgress() {
+      let answeredCount = 0;
+      questions.forEach((q, i) => {
+        const card = document.getElementById(`qc-${i}`);
+        if (q.type === 'tf') {
+           // Với TF, phải làm hết các ý con mới tính là đã làm
+           if(q.statements.every((_, si) => card.querySelector(`input[name="tf_${i}_${si}"]:checked`))) {
+             answeredCount++;
+           }
+        } else {
+           if(card.querySelector(`input[name="mcq_${i}"]:checked`)) {
+             answeredCount++;
+           }
+        }
+      });
+      const percent = (answeredCount / questions.length) * 100;
+      document.getElementById('progressBar').style.width = `${percent}%`;
+    }
+
+    // --- LOGIC MỚI: Modal xác nhận ---
+    function showConfirmModal() {
+      document.getElementById('confirmModal').classList.remove('hidden');
+    }
+    function closeConfirmModal() {
+      document.getElementById('confirmModal').classList.add('hidden');
+    }
+
+    // --- LOGIC MỚI: Lọc câu sai ---
+    function toggleWrongAnswers() {
+      const btn = document.getElementById('filterWrongBtn');
+      const cards = document.querySelectorAll('.question-card');
+      
+      isReviewMode = !isReviewMode;
+      
+      if (isReviewMode) {
+        btn.style.background = 'rgba(255, 92, 122, 0.2)'; // Highlight nút đỏ nhẹ
+        btn.innerHTML = `<i class="fas fa-list"></i> HIỆN TẤT CẢ`;
+        
+        cards.forEach(card => {
+            // Logic: Nếu card KHÔNG chứa class 'unanswered' (sai) hoặc không có feedback sai -> ẩn đi
+            // Ở đây ta dựa vào việc handleGrade đã add class .correct-choice cho đáp án đúng
+            // Cách đơn giản nhất: Kiểm tra xem user có làm sai không.
+            // Trong handleGrade ta chưa gắn class "wrong" cho cả cái card, giờ ta check thủ công:
+            
+            // Check đơn giản: Nếu có thẻ .tag-wrong (TF) hoặc .wrong-choice (MCQ) thì là SAI -> Giữ lại
+            const hasWrong = card.querySelector('.tag-wrong') || card.querySelector('.wrong-choice');
+            const isUnanswered = card.classList.contains('unanswered'); // Trường hợp chưa làm (về lý thuyết đã chặn, nhưng cứ để)
+            
+            if (!hasWrong && !isUnanswered) {
+                card.classList.add('hidden-by-filter');
+            }
+        });
+      } else {
+        btn.style.background = 'transparent';
+        btn.innerHTML = `<i class="fas fa-filter"></i> CHỈ XEM CÂU SAI`;
+        cards.forEach(card => card.classList.remove('hidden-by-filter'));
+      }
+    }
+
+    function handleGrade() {
+      closeConfirmModal(); // Đóng modal trước
+
+      // 1. Validation
+      let firstUnanswered = null;
+      questions.forEach((q, i) => {
+        const card = document.getElementById(`qc-${i}`);
+        card.classList.remove('unanswered');
+        let answered = false;
+        if (q.type === 'tf') {
+          answered = q.statements.every((_, si) => card.querySelector(`input[name="tf_${i}_${si}"]:checked`));
+        } else {
+          answered = !!card.querySelector(`input[name="mcq_${i}"]:checked`);
+        }
+        if (!answered) {
+          card.classList.add('unanswered');
+          if (!firstUnanswered) firstUnanswered = card;
+        }
+      });
+
+      if (firstUnanswered) {
+        firstUnanswered.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // Rung nhẹ để báo hiệu (optional)
+        return;
+      }
+
+      // 2. Chấm điểm
+      clearInterval(timer);
+      let userRawScore = 0;   
+      let maxRawScore = 0;    
+      const tfPointsMap = {0:0, 1:0.1, 2:0.25, 3:0.5, 4:1.0};
+
+      questions.forEach((q, i) => {
+        const card = document.getElementById(`qc-${i}`);
+        if (q.type === 'tf') {
+          maxRawScore += 1.0; 
+          let corrects = 0;
+          q.statements.forEach((s, si) => {
+            const row = document.getElementById(`tr-${i}-${si}`);
+            const userVal = card.querySelector(`input[name="tf_${i}_${si}"]:checked`).value === "true";
+            const isRight = userVal === s.answer;
+            if (isRight) corrects++;
+            row.querySelector('td').innerHTML += isRight 
+                ? `<span class="tag-feedback tag-correct">ĐÚNG</span>` 
+                : `<span class="tag-feedback tag-wrong">SAI (ĐÁP ÁN: ${s.answer?'ĐÚNG':'SAI'})</span>`;
+          });
+          userRawScore += tfPointsMap[corrects];
+        } else {
+          const pointsPerMcq = mode.point || 0.5;
+          maxRawScore += pointsPerMcq;
+
+          const userIdx = parseInt(card.querySelector(`input[name="mcq_${i}"]:checked`).value);
+          const isRight = userIdx === q.answer;
+          if (isRight) {
+            userRawScore += pointsPerMcq;
+            document.getElementById(`opt-${i}-${userIdx}`).classList.add('correct-choice');
+          } else {
+            document.getElementById(`opt-${i}-${userIdx}`).classList.add('wrong-choice');
+            document.getElementById(`opt-${i}-${q.answer}`).classList.add('correct-choice');
+          }
+        }
+        card.querySelectorAll('input').forEach(inp => inp.disabled = true);
+      });
+
+      // 3. Quy đổi hệ 10
+      let finalScore = (userRawScore / maxRawScore) * 10;
+      
+      document.getElementById('resScore').innerText = finalScore.toFixed(2);
+      submitAttemptToLeaderboard(finalScore);
+      document.getElementById('resTime').innerText = document.getElementById('quizTimer').innerText;
+      document.getElementById('finalResult').classList.remove('hidden');
+      document.getElementById('preSubmitBtn').style.display = 'none'; // Ẩn nút Nộp ở trên
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+
+    init();
+  </script>
+</body>
+</html>

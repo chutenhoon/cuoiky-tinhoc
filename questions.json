@@ -1,0 +1,980 @@
+{
+  "version": "1.0",
+  "subject": "Ôn tập kiểm tra bài 1 - bài 12 (Tin học lớp 12)",
+  "questions": [
+    {
+      "id": "AI_TT_01",
+      "type": "mcq",
+      "question": "Trong y học, AI không được sử dụng để:",
+      "choices": [
+        "Cải thiện chất lượng hình ảnh y tế",
+        "Hỗ trợ chẩn đoán và điều trị",
+        "Chế tạo thuốc điều trị mới",
+        "Thực hiện các phẫu thuật y khoa một cách độc lập."
+      ],
+      "answer": 3
+    },
+    {
+      "id": "AI_TT_02",
+      "type": "mcq",
+      "question": "Thuật ngữ “Deepfake” dùng để nói về hành vi nào sau đây?",
+      "choices": [
+        "Tạo ra các hình ảnh, âm thanh, video, … giả mạo",
+        "Phát hiện ra các hình ảnh, âm thanh, … giả mạo",
+        "Tạo ra các thông tin không có thật trên mạng",
+        "Phát hiện ra các thông tin giả mạo trên mạng"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "AI_TT_03",
+      "type": "mcq",
+      "question": "Ứng dụng nào sau đây không phải của AI trong ngành tài chính?",
+      "choices": [
+        "Phân tích dữ liệu đầu tư",
+        "Phát hiện và ngăn chặn gian lận",
+        "Tự động hoá quá trình sản xuất",
+        "Tự động hoá cập nhật chứng từ"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "AI_TT_04",
+      "type": "mcq",
+      "question": "Bên cạnh những lợi ích to lớn, sự phát triển của AI không kéo theo nguy cơ cần được cảnh báo nào sau đây?",
+      "choices": [
+        "Áp lực thất nghiệp",
+        "Các Hệ chuyên gia ngày càng thông minh.",
+        "Ảnh hưởng quyền riêng tư",
+        "Rủi ro về an ninh, an toàn"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "AI_TT_05",
+      "type": "mcq",
+      "question": "Khả năng học của AI là gì?",
+      "choices": [
+        "Trích xuất thông tin từ dữ liệu để học và tích lũy tri thức.",
+        "Cảm nhận và hiểu biết môi trường thông qua các cảm biến và thiết bị đầu vào.",
+        "Khả năng vận dụng logic và tri thức để đưa ra quyết định hoặc kết luận.",
+        "Khả năng tìm ra cách giải quyết các tình huống phức tạp dựa trên thông tin và tri thức."
+      ],
+      "answer": 0
+    },
+    {
+      "id": "AI_TT_06",
+      "type": "mcq",
+      "question": "Khẳng định nào sau đây là sai?",
+      "choices": [
+        "Switch có thể thay được hub trong mọi trường hợp.",
+        "Switch chỉ có thể thay thế cho hub khi số thiết bị mạng lớn hay tần suất sử dụng mạng cao.",
+        "Trong mạng gia đình có ít thiết bị, không cần dùng switch.",
+        "Hub có thể thay thế cho switch."
+      ],
+      "answer": 3
+    },
+    {
+      "id": "AI_TT_07",
+      "type": "mcq",
+      "question": "Theo em, hiện tại AI không có khả năng nào sau đây?",
+      "choices": [
+        "Dịch thuật",
+        "Phân biệt màu sắc",
+        "Làm thơ",
+        "Phân biệt mùi vị."
+      ],
+      "answer": 3
+    },
+    {
+      "id": "AI_TT_08",
+      "type": "mcq",
+      "question": "Đặc trưng nào sau đây không là một trong những đặc trưng cơ bản của AI?",
+      "choices": [
+        "Khả năng học",
+        "Khả năng vận động",
+        "Khả năng nhận thức",
+        "Khả năng suy luận."
+      ],
+      "answer": 1
+    },
+    {
+      "id": "AI_TT_09",
+      "type": "mcq",
+      "question": "Thiết bị nào có chức năng chuyển đổi tín hiệu số thành tín hiệu tương tự và ngược lại?",
+      "choices": [
+        "Router",
+        "Modem",
+        "Switch",
+        "Access Point"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "AI_TT_10",
+      "type": "mcq",
+      "question": "Hệ thống AI có khả năng học tập và đưa ra quyết định dựa trên:",
+      "choices": [
+        "Các quy tắc cố định",
+        "Dữ liệu và trải nghiệm",
+        "Lập trình cụ thể từ con người",
+        "Cảm xúc"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "AI_TT_11",
+      "type": "mcq",
+      "question": "Thiết bị nào dưới đây giúp kết nối các thiết bị mạng tạo thành mạng hình sao?",
+      "choices": [
+        "Laptop",
+        "Modem",
+        "Switch",
+        "Access point"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "AI_TT_12",
+      "type": "mcq",
+      "question": "Wireless Access Point thường được sử dụng trong mạng nào sau đây:",
+      "choices": [
+        "Mạng có dây",
+        "Mạng không dây",
+        "Mạng di động",
+        "Mạng diện rộng"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "AI_TT_13",
+      "type": "mcq",
+      "question": "Ứng dụng nào sau đây không sử dụng công nghệ nhận dạng khuôn mặt?",
+      "choices": [
+        "Mở khóa điện thoại thông minh.",
+        "Kiểm soát ra vào tòa nhà.",
+        "Đóng mở cửa ra vào các nhà hàng, siêu thị hay phòng chờ ở nhà ga, bến tàu, …",
+        "Xác minh danh tính tại sân bay."
+      ],
+      "answer": 2
+    },
+    {
+      "id": "AI_TT_14",
+      "type": "mcq",
+      "question": "Thiết bị Switch không có khả năng nào sau đây?",
+      "choices": [
+        "Kết nối các thiết bị với nhau qua cáp mạng trong cùng mạng Lan",
+        "Cho phép kết nối nhiều thiết bị vào mạng.",
+        "Kết nối các thiết bị không dây vào mạng.",
+        "Kết nối các máy tính trong cùng mạng LAN."
+      ],
+      "answer": 2
+    },
+    {
+      "id": "AI_TT_15",
+      "type": "mcq",
+      "question": "Trí tuệ nhân tạo ra đời từ khoảng năm nào?",
+      "choices": [
+        "1940",
+        "1950",
+        "1960",
+        "1970"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "AI_TT_16",
+      "type": "mcq",
+      "question": "Một ví dụ điển hình của AI trong đời sống hàng ngày là:",
+      "choices": [
+        "Trình duyệt web",
+        "Trợ lý ảo trên điện thoại",
+        "Máy in",
+        "Công cụ đo nhiệt độ"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "AI_TT_17",
+      "type": "mcq",
+      "question": "Loại máy móc nào sau đây không có tính thông minh?",
+      "choices": [
+        "Máy chụp X-quang trong bệnh viện",
+        "Máy phân loại trái cây theo chất lượng",
+        "Máy điểm danh bằng hình ảnh khuôn mặt",
+        "Máy phát hiện đối tượng lạ xâm nhập"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "AI_TT_18",
+      "type": "mcq",
+      "question": "Thiết bị nào sau đây kết nối các máy tính trong mạng không dây?",
+      "choices": [
+        "Switch",
+        "Router",
+        "Wireless Access Point",
+        "Modem"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "AI_TT_19",
+      "type": "mcq",
+      "question": "Thiết bị nào sau đây kết nối mạng diện rộng (WAN) và mạng cục bộ (LAN)?",
+      "choices": [
+        "Router",
+        "Wireless Access Point",
+        "Modem",
+        "Switch"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "AI_TT_20",
+      "type": "mcq",
+      "question": "Việc truyền dữ liệu trong mạng cục bộ dựa vào địa chỉ nào sau đây?",
+      "choices": [
+        "Địa chỉ IP.",
+        "Địa chỉ MAC.",
+        "Địa chỉ của Modem.",
+        "Địa chỉ của Router."
+      ],
+      "answer": 1
+    },
+    {
+      "id": "AI_TT_21",
+      "type": "mcq",
+      "question": "Giao thức nào sau đây định tuyến để dữ liệu đi từ thiết bị gởi đến thiết bị nhận?",
+      "choices": [
+        "HTTP.",
+        "IP.",
+        "HTTPS.",
+        "TCP."
+      ],
+      "answer": 1
+    },
+    {
+      "id": "AI_TT_22",
+      "type": "mcq",
+      "question": "Giao thức nào sau đây đảm bảo việc truyền dữ liệu cho từng ứng dụng một cách chính xác, tin cậy và hiệu quả?",
+      "choices": [
+        "HTTP.",
+        "IP.",
+        "HTTPS.",
+        "TCP."
+      ],
+      "answer": 3
+    },
+    {
+      "id": "AI_TT_23",
+      "type": "mcq",
+      "question": "Giao thức nào sau đây được dùng để truyền tải dữ liệu siêu văn bản trên web có bảo mật?",
+      "choices": [
+        "Giao thức HTTP.",
+        "Giao thức IP.",
+        "Giao thức HTTPS.",
+        "Giao thức DNS."
+      ],
+      "answer": 2
+    },
+    {
+      "id": "AI_TT_24",
+      "type": "mcq",
+      "question": "Địa chỉ nào sau đây không phải là địa chỉ IP:",
+      "choices": [
+        "192.168.1.1",
+        "192.168.1.50",
+        "203.126.71.235",
+        "192.168.1.300."
+      ],
+      "answer": 3
+    },
+    {
+      "id": "AI_TT_25",
+      "type": "mcq",
+      "question": "Địa chỉ trang web xem kết quả học tập của học sinh là https://vnedu.vn/. Nó thay thế cho địa chỉ nào sau đây?",
+      "choices": [
+        "Địa chỉ IP.",
+        "Địa chỉ MAC.",
+        "Địa chỉ TCP.",
+        "Địa chỉ HTTPS."
+      ],
+      "answer": 0
+    },
+    {
+      "id": "AI_TT_26",
+      "type": "mcq",
+      "question": "Trợ lí ảo của Apple là",
+      "choices": [
+        "Siri.",
+        "Cortana.",
+        "Alexa.",
+        "Bixby."
+      ],
+      "answer": 0
+    },
+    {
+      "id": "AI_TT_27",
+      "type": "mcq",
+      "question": "Robot hình người đầu tiên trên thế giới được tích hợp một số ứng dụng AI có tên:",
+      "choices": [
+        "Apollo.",
+        "Valkyrie.",
+        "Asimo.",
+        "Sophia."
+      ],
+      "answer": 2
+    },
+    {
+      "id": "AI_TT_28",
+      "type": "mcq",
+      "question": "Robot hình người đầu tiên trên thế giới được tích hợp một số ứng dụng AI do hãng nào sản xuất?",
+      "choices": [
+        "Tesla.",
+        "Honda.",
+        "NASA.",
+        "Toshiba."
+      ],
+      "answer": 1
+    },
+    {
+      "id": "AI_TT_29",
+      "type": "mcq",
+      "question": "Phát biểu nào sau đây là SAI về AI?",
+      "choices": [
+        "AI là mô phỏng theo trí tuệ người.",
+        "AI có bốn lĩnh vực nghiên cứu chính.",
+        "AI luôn đưa ra câu trả lời chính xác.",
+        "AI hiện nay đều là các AI mức hẹp."
+      ],
+      "answer": 2
+    },
+    {
+      "id": "AI_TT_30",
+      "type": "mcq",
+      "question": "Hiện nay mạng Internet sử dụng giao thức nào sau đây?",
+      "choices": [
+        "IPv4",
+        "IP",
+        "TCP",
+        "TCP/IP"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "TN68_MCQ_01",
+      "type": "mcq",
+      "question": "“Không gian mạng” là gì?",
+      "choices": [
+        "là nơi gặp gỡ trực tiếp giữa con người.",
+        "là môi trường được tạo ra nhờ các mạng máy tính.",
+        "là một phần mềm trên Internet.",
+        "là mạng truyền hình trực tuyến."
+      ],
+      "answer": 1
+    },
+    {
+      "id": "TN68_MCQ_02",
+      "type": "mcq",
+      "question": "Hình thức nào dưới đây không phải là giao tiếp trong không gian mạng?",
+      "choices": [
+        "Nhắn tin qua mạng xã hội.",
+        "Gọi điện thoại video.",
+        "Gặp mặt tại một quán cà phê.",
+        "Học trực tuyến qua Zoom."
+      ],
+      "answer": 2
+    },
+    {
+      "id": "TN68_MCQ_03",
+      "type": "mcq",
+      "question": "Ưu điểm của giao tiếp trong không gian mạng là:",
+      "choices": [
+        "Tốn nhiều thời gian hơn giao tiếp trực tiếp.",
+        "Giúp mở rộng kết nối xã hội và tiết kiệm chi phí.",
+        "Khó tiếp cận người khác do khác biệt vị trí địa lý.",
+        "Gây mất an toàn thông tin."
+      ],
+      "answer": 1
+    },
+    {
+      "id": "TN68_MCQ_04",
+      "type": "mcq",
+      "question": "Một trong các nhược điểm của giao tiếp trong không gian mạng là:",
+      "choices": [
+        "Có thể kết nối toàn cầu.",
+        "Dễ bị ảnh hưởng bởi sự cố kỹ thuật.",
+        "Giao tiếp nhanh chóng và tiện lợi.",
+        "Dễ chia sẻ thông tin và hình ảnh."
+      ],
+      "answer": 1
+    },
+    {
+      "id": "TN68_MCQ_05",
+      "type": "mcq",
+      "question": "Khi giao tiếp trong không gian mạng, hành vi nào sau đây thể hiện tính nhân văn?",
+      "choices": [
+        "Dùng lời lẽ xúc phạm người khác.",
+        "Lắng nghe, tôn trọng và chia sẻ ý kiến của người khác.",
+        "Chia sẻ thông tin cá nhân của bạn bè.",
+        "Đưa hình ảnh người khác lên mạng khi chưa được phép."
+      ],
+      "answer": 1
+    },
+    {
+      "id": "TN68_MCQ_06",
+      "type": "mcq",
+      "question": "HTML là viết tắt của cụm từ nào sau đây?",
+      "choices": [
+        "Hyperlinks Text Markup Language",
+        "Hypertext Markup Language",
+        "Home Tool Markup Language",
+        "Hyper Tool Markup Language"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "TN68_MCQ_07",
+      "type": "mcq",
+      "question": "Thẻ nào được sử dụng để bắt đầu và kết thúc một tài liệu HTML?",
+      "choices": [
+        "&lt;html&gt; và &lt;/html&gt;",
+        "&lt;doc&gt; và &lt;/doc&gt;",
+        "&lt;start&gt; và &lt;/start&gt;",
+        "&lt;head&gt; và &lt;/head&gt;"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "TN68_MCQ_08",
+      "type": "mcq",
+      "question": "Thẻ &lt;title&gt; nằm trong phần nào của trang HTML?",
+      "choices": [
+        "&lt;header&gt;",
+        "&lt;body&gt;",
+        "&lt;head&gt;",
+        "&lt;footer&gt;"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "TN68_MCQ_09",
+      "type": "mcq",
+      "question": "Phần tử HTML gồm các thành phần nào sau đây?",
+      "choices": [
+        "Thẻ bắt đầu và thẻ kết thúc",
+        "Chỉ có thẻ kết thúc",
+        "Gồm thẻ bắt đầu, thẻ kết thúc và phần nội dung nằm giữa cặp thẻ này",
+        "Thẻ kết thúc và phần nội dung"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "TN68_MCQ_10",
+      "type": "mcq",
+      "question": "Các phần mềm nào sau đây có thể soạn thảo HTML",
+      "choices": [
+        "Notepad",
+        "Notepad++",
+        "Sublime text",
+        "Atom, Sublime text, Notepad++, Notepad"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "TN68_MCQ_11",
+      "type": "mcq",
+      "question": "Thẻ &lt;p&gt; nằm trong phần nào của trang HTML?",
+      "choices": [
+        "&lt;div&gt;",
+        "&lt;body&gt;",
+        "&lt;head&gt;",
+        "&lt;h1&gt;"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "TN68_MCQ_12",
+      "type": "mcq",
+      "question": "Thẻ nào sau đây dùng để hiển thị nội dung tiêu đề lớn nhất trong HTML?",
+      "choices": [
+        "&lt;title&gt;",
+        "&lt;h6&gt;",
+        "&lt;h1&gt;",
+        "&lt;header&gt;"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "TN68_MCQ_13",
+      "type": "mcq",
+      "question": "Trong HTML, thẻ nào sau đây dùng để tạo đoạn văn bản?",
+      "choices": [
+        "&lt;para&gt;",
+        "&lt;text&gt;",
+        "&lt;p&gt;",
+        "&lt;paragraph&gt;"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "TN68_MCQ_14",
+      "type": "mcq",
+      "question": "Trong HTML, thuộc tính nào sau đây để định dạng phông chữ?",
+      "choices": [
+        "background",
+        "bgcolor",
+        "color",
+        "style"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "TN68_MCQ_15",
+      "type": "mcq",
+      "question": "Trong HTML, thẻ nào sau đây có thể tạo ra một khối chứa nhiều loại dữ liệu",
+      "choices": [
+        "&lt;h1&gt;",
+        "&lt;p&gt;",
+        "&lt;div&gt;",
+        "&lt;br&gt;"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "TN68_MCQ_16",
+      "type": "mcq",
+      "question": "Trong HTML, thẻ nào sau đây dùng để định dạng tiêu đề?",
+      "choices": [
+        "&lt;h1&gt;",
+        "&lt;p&gt;",
+        "&lt;div&gt;",
+        "&lt;br&gt;"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "TN68_TF_01",
+      "type": "tf",
+      "question": "Trí tuệ nhân tạo (AI) mang lại những ảnh hưởng tích cực như tăng cường hiệu quả công việc và cải thiện chất lượng cuộc sống. Tuy nhiên, nó cũng gây ra những thách thức về việc làm và quyền riêng tư của con người. Các bạn học sinh có nhận xét về những ảnh hưởng của trí tuệ nhân tạo đối với con người như sau:\na) Con người có thể bị thất nghiệp bởi AI\nb) AI luôn luôn công bằng khi áp dụng trong hệ thống hỗ trợ tuyển dụng\nc) Không thể sử dụng AI để giả mạo giọng nói, khuôn mặt của con người\nd) AI có thể thu thập thông tin riêng tư của con người",
+      "statements": [
+        { "text": "Con người có thể bị thất nghiệp bởi AI", "answer": true },
+        { "text": "AI luôn luôn công bằng khi áp dụng trong hệ thống hỗ trợ tuyển dụng", "answer": false },
+        { "text": "Không thể sử dụng AI để giả mạo giọng nói, khuôn mặt của con người", "answer": false },
+        { "text": "AI có thể thu thập thông tin riêng tư của con người", "answer": true }
+      ]
+    },
+    {
+      "id": "TN68_TF_02",
+      "type": "tf",
+      "question": "Trong một lớp học, giáo viên dạy môn Tin học hướng dẫn học sinh sử dụng công cụ dịch tự động của Google để dịch bài báo tiếng Anh sang tiếng Việt. Một số bạn học sinh đưa ra ý kiến như sau:\nA. Ứng dụng dịch tự động là ví dụ về việc áp dụng khả năng hiểu ngôn ngữ của trí tuệ nhân tạo.\nB. Máy tính chỉ dịch được nhờ có con người nhập sẵn toàn bộ nội dung từng bài báo.\nC. Hệ thống dịch tự động thuộc nhóm ứng dụng AI có khả năng học và cải thiện độ chính xác theo thời gian.\nD. Việc sử dụng công cụ dịch thuật là minh chứng cho khả năng suy luận của máy tính.",
+      "statements": [
+        { "text": "Ứng dụng dịch tự động là ví dụ về việc áp dụng khả năng hiểu ngôn ngữ của trí tuệ nhân tạo.", "answer": true },
+        { "text": "Máy tính chỉ dịch được nhờ có con người nhập sẵn toàn bộ nội dung từng bài báo.", "answer": false },
+        { "text": "Hệ thống dịch tự động thuộc nhóm ứng dụng AI có khả năng học và cải thiện độ chính xác theo thời gian.", "answer": true },
+        { "text": "Việc sử dụng công cụ dịch thuật là minh chứng cho khả năng suy luận của máy tính.", "answer": false }
+      ]
+    },
+    {
+      "id": "TN68_TF_03",
+      "type": "tf",
+      "question": "Trường THPT Vĩnh Bình có 2 phòng máy tính, mỗi phòng 49 máy. Yêu cầu cài đặt mạng LAN riêng cho từng phòng và kết nối mạng Internet. Nhà trường đã đăng ký sử dụng Internet với nhà cung cấp dịch vụ Viettel và được họ lắp đặt một Modem có tích hợp cả chức năng của Router, Access Point và Switch, ngoài ra mạng LAN mỗi phòng máy có kết nối thêm 3 cái Switch. Một số bạn học sinh lớp 12 đưa ra các ý kiến sau:\na) Để thiết lập mạng LAN cho mỗi phòng máy này nên sử dụng thiết bị Switch là tốt nhất\nb) Chức năng Router được tích hợp trong Modem để định tuyến dữ liệu và nhưng nó không thể kết nối giữa các mạng LAN của các phòng máy và mạng Internet\nc) Ngoài việc kết nối các máy tính vào mạng LAN bằng cáp mạng, nó còn cho phép các thiết bị khác như điện thoại, laptop có thể kết nối vào mạng LAN bằng mạng không dây\nd) Các thiết bị Switch hay Hub sử dụng để kết nối các thiết bị trong mạng bằng cáp mạng thông qua giắc cắm RJ-45",
+      "statements": [
+        { "text": "Để thiết lập mạng LAN cho mỗi phòng máy này nên sử dụng thiết bị Switch là tốt nhất", "answer": true },
+        { "text": "Chức năng Router được tích hợp trong Modem để định tuyến dữ liệu và nhưng nó không thể kết nối giữa các mạng LAN của các phòng máy và mạng Internet", "answer": false },
+        { "text": "Ngoài việc kết nối các máy tính vào mạng LAN bằng cáp mạng, nó còn cho phép các thiết bị khác như điện thoại, laptop có thể kết nối vào mạng LAN bằng mạng không dây", "answer": true },
+        { "text": "Các thiết bị Switch hay Hub sử dụng để kết nối các thiết bị trong mạng bằng cáp mạng thông qua giắc cắm RJ-45", "answer": true }
+      ]
+    },
+    {
+      "id": "TN68_TF_04",
+      "type": "tf",
+      "question": "Trường THPT A vừa được cấp mới một phòng Tin học. Kỹ thuật viên sử dụng các thiết bị mạng như Switch, Hub, Modem Wifi, Router, Access point, dây mạng, … để kết nối 49 máy tính vào mạng LAN dùng cho học tập, chia sẻ tài nguyên và Internet. Một số bạn học sinh đưa ra các nhận xét như sau:\nA. Switch giúp kết nối các máy tính trong cùng mạng LAN và truyền dữ liệu đến đúng máy nhận.\nB. Hub là thiết bị thông minh có khả năng chọn đường truyền tối ưu cho từng gói tin.\nC. Router là thiết bị dùng để kết nối mạng LAN của trường với mạng Internet.\nD. Để mạng hoạt động ổn định, giảm xung đột dữ liệu giữa các máy cần sử dụng Switch đế kết nối các máy tính trong mạng LAN.",
+      "statements": [
+        { "text": "Switch giúp kết nối các máy tính trong cùng mạng LAN và truyền dữ liệu đến đúng máy nhận.", "answer": true },
+        { "text": "Hub là thiết bị thông minh có khả năng chọn đường truyền tối ưu cho từng gói tin.", "answer": false },
+        { "text": "Router là thiết bị dùng để kết nối mạng LAN của trường với mạng Internet.", "answer": true },
+        { "text": "Để mạng hoạt động ổn định, giảm xung đột dữ liệu giữa các máy cần sử dụng Switch đế kết nối các máy tính trong mạng LAN.", "answer": true }
+      ]
+    },
+    {
+      "id": "TN68_TF_05",
+      "type": "tf",
+      "question": "Gia đình bạn Minh mới lắp đặt mạng Internet cáp quang. Kỹ thuật viên cung cấp một Modem Wi-Fi để cả nhà có thể truy cập Internet không dây. Bạn Minh đưa ra một số ý kiến như sau:\nA. Modem có chức năng chuyển đổi tín hiệu số của máy tính thành tín hiệu tương tự để truyền qua đường truyền Internet.\nB. Router Wi-Fi có thể phát sóng không dây để nhiều thiết bị cùng truy cập mạng.\nC. Switch là thiết bị cần thiết nếu muốn mở rộng thêm số cổng kết nối mạng LAN trong nhà.\nD. Đặt Modem Wi-Fi gần lò vi sóng hoặc tường bê tông dày sẽ giúp tín hiệu Wi-Fi mạnh hơn.",
+      "statements": [
+        { "text": "Modem có chức năng chuyển đổi tín hiệu số của máy tính thành tín hiệu tương tự để truyền qua đường truyền Internet.", "answer": true },
+        { "text": "Router Wi-Fi có thể phát sóng không dây để nhiều thiết bị cùng truy cập mạng.", "answer": true },
+        { "text": "Switch là thiết bị cần thiết nếu muốn mở rộng thêm số cổng kết nối mạng LAN trong nhà.", "answer": true },
+        { "text": "Đặt Modem Wi-Fi gần lò vi sóng hoặc tường bê tông dày sẽ giúp tín hiệu Wi-Fi mạnh hơn.", "answer": false }
+      ]
+    },
+    {
+      "id": "TN68_TF_06",
+      "type": "tf",
+      "question": "Lan và các bạn là học sinh lớp 12 thường xuyên tham gia học nhóm trên mạng xã hội như Zalo, Facebook, Youtube, Zoom, … để chia sẻ thông tin học tập, giúp đỡ lẫn nhau. Một lần, có bạn trong lớp bị người khác nói xấu trong nhóm. Lan phân vân không biết nên phản ứng thế nào để ứng xử nhân văn trong không gian mạng. Bạn đưa ra các ý kiến như sau:\nA. Ứng xử nhân văn thể hiện qua tôn trọng, lắng nghe và thấu hiểu người khác khi giao tiếp trực tuyến.\nB. Có thể sử dụng ngôn ngữ xúc phạm người khác nếu họ sai hoặc khác quan điểm với mình.\nC. Khi thấy nội dung tiêu cực, người dùng nên báo cáo hoặc góp ý lịch sự thay vì bình luận tiêu cực.\nD. Chia sẻ hình ảnh riêng tư của bạn bè lên mạng là biểu hiện của tinh thần cởi mở và thân thiện.",
+      "statements": [
+        { "text": "Ứng xử nhân văn thể hiện qua tôn trọng, lắng nghe và thấu hiểu người khác khi giao tiếp trực tuyến.", "answer": true },
+        { "text": "Có thể sử dụng ngôn ngữ xúc phạm người khác nếu họ sai hoặc khác quan điểm với mình.", "answer": false },
+        { "text": "Khi thấy nội dung tiêu cực, người dùng nên báo cáo hoặc góp ý lịch sự thay vì bình luận tiêu cực.", "answer": true },
+        { "text": "Chia sẻ hình ảnh riêng tư của bạn bè lên mạng là biểu hiện của tinh thần cởi mở và thân thiện.", "answer": false }
+      ]
+    },
+    {
+      "id": "TN68_TF_07",
+      "type": "tf",
+      "question": "Trong thời gian học trực tuyến trên mạng xã hội như Zalo, Facebook, Google Meet, … học sinh thường xuyên trao đổi bài tập, chia sẻ tài liệu và thảo luận với bạn bè. Một số bạn đưa ra ý kiến như sau về giao tiếp trong không gian mạng:\nA. Không gian mạng là môi trường được tạo ra nhờ các mạng máy tính và Internet.\nB. Giao tiếp trong không gian mạng luôn đảm bảo an toàn tuyệt đối cho thông tin cá nhân.\nC. Giao tiếp trực tuyến giúp tiết kiệm thời gian, chi phí và mở rộng kết nối xã hội.\nD. Khi giao tiếp trong không gian mạng, người dùng nên kiểm tra độ tin cậy của thông tin trước khi chia sẻ.",
+      "statements": [
+        { "text": "Không gian mạng là môi trường được tạo ra nhờ các mạng máy tính và Internet.", "answer": true },
+        { "text": "Giao tiếp trong không gian mạng luôn đảm bảo an toàn tuyệt đối cho thông tin cá nhân.", "answer": false },
+        { "text": "Giao tiếp trực tuyến giúp tiết kiệm thời gian, chi phí và mở rộng kết nối xã hội.", "answer": true },
+        { "text": "Khi giao tiếp trong không gian mạng, người dùng nên kiểm tra độ tin cậy của thông tin trước khi chia sẻ.", "answer": true }
+      ]
+    },
+    {
+      "id": "TN912_MCQ_01",
+      "type": "mcq",
+      "question": "Thẻ HTML nào sau đây dùng để tạo danh sách có thứ tự?",
+      "choices": [
+        "&lt;ol&gt;",
+        "&lt;li&gt;",
+        "&lt;ul&gt;",
+        "&lt;list&gt;"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "TN912_MCQ_02",
+      "type": "mcq",
+      "question": "Thẻ HTML nào sau đây dùng để tạo danh sách không có thứ tự?",
+      "choices": [
+        "&lt;ol&gt;",
+        "&lt;li&gt;",
+        "&lt;ul&gt;",
+        "&lt;list&gt;"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "TN912_MCQ_03",
+      "type": "mcq",
+      "question": "Trong HTML, thẻ &lt;table&gt; được dùng để làm gì?",
+      "choices": [
+        "Tạo danh sách gạch đầu dòng",
+        "Tạo bảng",
+        "Tạo tiêu đề",
+        "Tạo liên kết"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "TN912_MCQ_04",
+      "type": "mcq",
+      "question": "Trong HTML, thẻ nào dùng để thêm hàng (row) vào bảng?",
+      "choices": [
+        "&lt;tr&gt;",
+        "&lt;td&gt;",
+        "&lt;th&gt;",
+        "&lt;row&gt;"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "TN912_MCQ_05",
+      "type": "mcq",
+      "question": "Trong HTML, thẻ nào dùng để thêm ô dữ liệu vào bảng?",
+      "choices": [
+        "&lt;tr&gt;",
+        "&lt;td&gt;",
+        "&lt;th&gt;",
+        "&lt;row&gt;"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "TN912_MCQ_06",
+      "type": "mcq",
+      "question": "Trong HTML, thẻ nào dùng để thêm ô tiêu đề vào bảng?",
+      "choices": [
+        "&lt;tr&gt;",
+        "&lt;td&gt;",
+        "&lt;th&gt;",
+        "&lt;row&gt;"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "TN912_MCQ_07",
+      "type": "mcq",
+      "question": "Để gộp hai cột trong bảng HTML, cần sử dụng thuộc tính nào?",
+      "choices": [
+        "rowspan",
+        "colspan",
+        "merge",
+        "column-span"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "TN912_MCQ_08",
+      "type": "mcq",
+      "question": "Để gộp hai dòng trong bảng HTML, cần sử dụng thuộc tính nào?",
+      "choices": [
+        "rowspan",
+        "colspan",
+        "merge",
+        "column-span"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "TN912_MCQ_09",
+      "type": "mcq",
+      "question": "Trong HTML, thẻ nào sau đây dùng để tạo siêu liên kết?",
+      "choices": [
+        "&lt;a&gt;",
+        "&lt;link&gt;",
+        "&lt;href&gt;",
+        "&lt;hyperlink&gt;"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "TN912_MCQ_10",
+      "type": "mcq",
+      "question": "Thuộc tính nào trong thẻ &lt;a&gt; dùng để chỉ định đường dẫn liên kết?",
+      "choices": [
+        "src",
+        "href",
+        "link",
+        "path"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "TN912_MCQ_11",
+      "type": "mcq",
+      "question": "Đường dẫn nào là đường dẫn tuyệt đối?",
+      "choices": [
+        "/images/photo.jpg",
+        "http://www.tuoitre.vn/images/photo.jpg",
+        "images/photo.jpg",
+        "./photo.jpg"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "TN912_MCQ_12",
+      "type": "mcq",
+      "question": "Đường dẫn nào là đường dẫn tương đối?",
+      "choices": [
+        "http://www.tuoitre.vn/images/photo.jpg",
+        "http://www.tuoitre.vn/images/photo.jpg",
+        "images/hcv.jpg",
+        "http://thptvinhbinh.tiengiang.edu.vn/images/hcv.jpg"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "TN912_MCQ_13",
+      "type": "mcq",
+      "question": "Câu lệnh nào sau đây là đúng để tạo một liên kết dẫn tới trang https://www.google.com với dòng chữ \"Google\"?",
+      "choices": [
+        "&lt;a link=&quot;https://www.google.com&quot;&gt;Google&lt;/a&gt;",
+        "&lt;a href=&quot;https://www.google.com&quot;&gt;Google&lt;/a&gt;",
+        "&lt;a src=&quot;https://www.google.com&quot;&gt;Google&lt;/a&gt;",
+        "&lt;a target=&quot;https://www.google.com&quot;&gt;Google&lt;/a&gt;"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "TN912_MCQ_14",
+      "type": "mcq",
+      "question": "Đâu là cú pháp đúng để chèn một ảnh vào trang html?",
+      "choices": [
+        "&lt;img link=&quot;image.jpg&quot; &gt;",
+        "&lt;image href=&quot;image.jpg&quot; &gt;",
+        "&lt;img src=&quot;image.jpg&quot; &gt;",
+        "&lt;image src=&quot;image.jpg&quot; &gt;"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "TN912_MCQ_15",
+      "type": "mcq",
+      "question": "Thuộc tính nào trong &lt;audio&gt; và &lt;video&gt; cho phép người dùng hiển thị bảng điều khiển pause và play?",
+      "choices": [
+        "controls",
+        "playbar",
+        "settings",
+        "command"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "TN912_MCQ_16",
+      "type": "mcq",
+      "question": "Thuộc tính nào của thẻ &lt;video&gt; để video tự động phát?",
+      "choices": [
+        "autoplay",
+        "play",
+        "auto",
+        "start"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "TN912_MCQ_17",
+      "type": "mcq",
+      "question": "Thẻ HTML nào sau đây dùng để chèn âm thanh vào trang web?",
+      "choices": [
+        "&lt;audio&gt;",
+        "&lt;sound&gt;",
+        "&lt;music&gt;",
+        "&lt;media&gt;"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "TN912_MCQ_18",
+      "type": "mcq",
+      "question": "Thẻ HTML nào sau đây dùng để chèn video vào trang web?",
+      "choices": [
+        "&lt;video&gt;",
+        "&lt;mov&gt;",
+        "&lt;iframe&gt;",
+        "&lt;media&gt;"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "TN912_MCQ_19",
+      "type": "mcq",
+      "question": "Thuộc tính nào sau đây giúp thay đổi kích thước ảnh trong thẻ &lt;img&gt;?",
+      "choices": [
+        "height, width",
+        "size, scale",
+        "resize, dimensions",
+        "length, breadth"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "TN912_MCQ_20",
+      "type": "mcq",
+      "question": "Thẻ nào sau đây dùng để chèn hình ảnh vào trang web?",
+      "choices": [
+        "&lt;image&gt;",
+        "&lt;picture&gt;",
+        "&lt;img&gt;",
+        "&lt;src&gt;"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "TN912_MCQ_21",
+      "type": "mcq",
+      "question": "Thuộc tính nào sau đây của thẻ &lt;img&gt; được dùng để chỉ định đường dẫn của hình ảnh?",
+      "choices": [
+        "path",
+        "src",
+        "href",
+        "link"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "TN912_MCQ_22",
+      "type": "mcq",
+      "question": "Thẻ HTML nào sau đây dùng để tạo biểu mẫu web?",
+      "choices": [
+        "&lt;input&gt;",
+        "&lt;form&gt;",
+        "&lt;label&gt;",
+        "&lt;select&gt;"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "TN912_MCQ_23",
+      "type": "mcq",
+      "question": "Thuộc tính nào sau đây của thẻ &lt;input&gt; dùng để xác định kiểu dữ liệu cần nhập?",
+      "choices": [
+        "type",
+        "id",
+        "value",
+        "name"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "TN912_MCQ_24",
+      "type": "mcq",
+      "question": "Thẻ &lt;label&gt; có tác dụng chính nào sau đây?",
+      "choices": [
+        "Nhập dữ liệu cho biểu mẫu",
+        "Gửi dữ liệu về máy chủ",
+        "Gắn nhãn mô tả cho ô nhập dữ liệu",
+        "Tạo nút bấm"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "TN912_MCQ_25",
+      "type": "mcq",
+      "question": "Muốn tạo biểu mẫu nhập liệu như hình sau thì ta chọn giá trị nào sau đây cho thuộc tính type?",
+      "choices": [
+        "checkbox",
+        "radio",
+        "password",
+        "file"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "TN912_MCQ_26",
+      "type": "mcq",
+      "question": "Muốn tạo biểu mẫu nhập liệu có nút lệnh để gửi thông tin đến máy chủ thì ta chọn giá trị nào sau đây cho thuộc tính type?",
+      "choices": [
+        "text",
+        "radio",
+        "submit",
+        "file"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "TN912_TF_01",
+      "type": "tf",
+      "question": "Trường THPT Nguyễn Văn A có 3 phòng máy tính, mỗi phòng 49 máy. Yêu cầu cài đặt mạng LAN riêng cho từng phòng lắp đặt mạng Internet. Nhà trường đã đăng ký sử dụng Internet với nhà cung cấp dịch vụ FPT và được họ lắp đặt một Modem có tích hợp cả chức năng của Router, Switch và Access Point. Một số bạn học sinh đưa ra các ý kiến sau:\na) Router được tích hợp trong Modem để phát wifi cho các điện thoại thông minh và laptop của học sinh và thầy cô vào mạng Internet\nb) Để thiết lập mạng LAN cho mỗi phòng máy nên sử dụng thiết bị Switch là tối ưu nhất\nc) Switch dùng để kết nối máy tính trong mạng bằng cáp mạng thông qua giắc cắm RJ-45\nd) Ngoài việc kết nối các máy tính vào mạng LAN bằng cáp mạng, Switch còn cho phép các thiết bị khác như điện thoại, laptop có thể kết nối vào mạng LAN bằng mạng không dây",
+      "statements": [
+        { "text": "Router được tích hợp trong Modem để phát wifi cho các điện thoại thông minh và laptop của học sinh và thầy cô vào mạng Internet", "answer": false },
+        { "text": "Để thiết lập mạng LAN cho mỗi phòng máy nên sử dụng thiết bị Switch là tối ưu nhất", "answer": true },
+        { "text": "Switch dùng để kết nối máy tính trong mạng bằng cáp mạng thông qua giắc cắm RJ-45", "answer": true },
+        { "text": "Ngoài việc kết nối các máy tính vào mạng LAN bằng cáp mạng, Switch còn cho phép các thiết bị khác như điện thoại, laptop có thể kết nối vào mạng LAN bằng mạng không dây", "answer": false }
+      ]
+    },
+    {
+      "id": "TN912_TF_02",
+      "type": "tf",
+      "question": "Trong chẩn đoán bệnh ung thư, các mô hình Học máy sử dụng dữ liệu từ hồ sơ bệnh án để phát hiện, đo lường và phân tích khối u, định vị tế bào ác tính trong hình ảnh hiển vi một cách hiệu quả, chính xác, giảm chi phí và thời gian. Sau đây là các phát biểu về ứng dụng của Học máy trong chẩn đoán bệnh:\na) Phần mềm IBM Watson for Oncology đã góp phần chẩn đoán bệnh ung thư ở Việt Nam.\nb) Quy trình chẩn đoán truyền thống cần sự can thiệp của con người chính xác và ít tốn kém hơn so với hệ thống chẩn đoán dựa trên Học máy.\nc) Hệ thống chẩn đoán và điều trị sớm dựa trên Học máy có thể giúp phát hiện bệnh sớm và tiết kiệm chi phí hơn.\nd) Các mô hình Học máy không thể được sử dụng để chẩn đoán các loại bệnh như ung thư, tiểu đường, sốt xuất huyết.",
+      "statements": [
+        { "text": "Phần mềm IBM Watson for Oncology đã góp phần chẩn đoán bệnh ung thư ở Việt Nam.", "answer": true },
+        { "text": "Quy trình chẩn đoán truyền thống cần sự can thiệp của con người chính xác và ít tốn kém hơn so với hệ thống chẩn đoán dựa trên Học máy.", "answer": false },
+        { "text": "Hệ thống chẩn đoán và điều trị sớm dựa trên Học máy có thể giúp phát hiện bệnh sớm và tiết kiệm chi phí hơn.", "answer": true },
+        { "text": "Các mô hình Học máy không thể được sử dụng để chẩn đoán các loại bệnh như ung thư, tiểu đường, sốt xuất huyết.", "answer": false }
+      ]
+    },
+    {
+      "id": "TN912_TF_03",
+      "type": "tf",
+      "question": "Năm học rồi bạn Ngân tham gia cuộc thi sáng tạo Thanh thiếu niên nhi đồng cấp tỉnh với tên dự án là hệ thống chẩn đoán và hỗ trợ điều trị các bệnh tâm lý trực tuyến. Ngân phải thiết kế và lập trình một trang web bằng HTML có chèn văn bản, hình ảnh, âm thanh, video, biểu mẫu và siêu liên kết để chẩn đoán và điều trị bệnh tâm lý. Sau khi tìm hiểu về lập trình trang web, bạn đưa ra ý kiến như sau:\na) Để chèn hình ảnh vào trang web thì sử dụng thẻ img và thẻ src\nb) Để tạo siêu liên kết trong trang web thì sử dụng thẻ a và thẻ href\nc) Muốn tạo biểu mẫu nhập liệu có nút lệnh để gửi thông tin đến máy chủ thì sử dụng thuộc tính type với giá trị là button\nd) Để chèn video vào trang web với kích thước chiều rộng và chiều cao là 500 và 700 pixel, Ngân sử dụng thẻ video và thuộc tính height và width",
+      "statements": [
+        { "text": "Để chèn hình ảnh vào trang web thì sử dụng thẻ img và thẻ src", "answer": true },
+        { "text": "Để tạo siêu liên kết trong trang web thì sử dụng thẻ a và thẻ href", "answer": true },
+        { "text": "Muốn tạo biểu mẫu nhập liệu có nút lệnh để gửi thông tin đến máy chủ thì sử dụng thuộc tính type với giá trị là button", "answer": false },
+        { "text": "Để chèn video vào trang web với kích thước chiều rộng và chiều cao là 500 và 700 pixel, Ngân sử dụng thẻ video và thuộc tính height và width", "answer": true }
+      ]
+    }
+  ]
+}
