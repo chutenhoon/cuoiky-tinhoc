@@ -14,7 +14,8 @@
       <div class="nav-inner">
         <a href="https://trac-nghiem.pages.dev/mode" class="nav-back"><i class="fas fa-chevron-left"></i></a>
         <span class="nav-title">Cấu hình</span>
-        <div class="nav-placeholder"></div> </div>
+        <div class="nav-placeholder"></div>
+      </div>
     </nav>
 
     <main class="content">
@@ -99,8 +100,6 @@
         </div>
       </div>
 
-    
-      <!-- Leaderboard (Top 3) -->
       <section class="leaderboard glass-panel" aria-label="Bảng xếp hạng">
         <div class="lb-head">
           <div class="lb-title">Bảng xếp hạng</div>
@@ -119,8 +118,6 @@
     </main>
   </div>
 
-  
-  <!-- Identity Modal -->
   <div id="idModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="idModalTitle">
     <div class="modal-card">
       <div class="modal-top">
@@ -144,19 +141,15 @@
     </div>
   </div>
 
-
   <style>
-    /* --- CSS TINH TẾ (PREMIUM DARK) --- */
     :root {
         --bg: #050505;
         --surface: #121212;
         --surface-hover: #1E1E1E;
         --border: rgba(255,255,255,0.08);
-        
         --text-primary: #EDEDED;
         --text-secondary: #888888;
         --accent: #fff;
-        
         --font-main: 'Inter', sans-serif;
         --radius: 16px;
     }
@@ -552,13 +545,11 @@
         pendingNext = next || null;
         const modal = document.getElementById("idModal");
         const input = document.getElementById("displayNameInput");
-
         const err = document.getElementById("idError");
         if (err) err.classList.add("hidden");
         input.classList.remove("is-invalid");
         const currentName = localStorage.getItem(LB_KEYS.name) || "";
         input.value = (currentName && currentName !== "Ẩn danh") ? currentName : "";
-
         modal.classList.remove("hidden");
         setTimeout(() => input.focus(), 50);
       }
@@ -576,7 +567,6 @@
       function ensureUser(next) {
         const uid = localStorage.getItem(LB_KEYS.uid);
         const name = localStorage.getItem(LB_KEYS.name);
-
         if (uid && name) {
           next();
           return;
@@ -604,17 +594,14 @@
         const input = document.getElementById("displayNameInput");
         const err = document.getElementById("idError");
         const raw = (input.value || "").trim();
-
         if (!raw.length) {
           if (err) err.classList.remove("hidden");
           input.classList.add("is-invalid");
           input.focus();
           return;
         }
-
         const name = raw.slice(0, 24);
         setName(name);
-
         try {
           fetch("/api/user-identity", {
             method: "POST",
@@ -623,7 +610,6 @@
             body: JSON.stringify({ displayName: name })
           }).catch(() => {});
         } catch (_) {}
-
         const next = pendingNext;
         close();
         if (typeof next === "function") next();
@@ -636,34 +622,27 @@
       const loading = document.getElementById("lbLoading");
       const empty = document.getElementById("lbEmpty");
       const list = document.getElementById("lbList");
-
       try {
         loading.classList.remove("hidden");
         empty.classList.add("hidden");
         list.classList.add("hidden");
         list.innerHTML = "";
-
         const res = await fetch("/api/leaderboard?limit=3", { cache: "no-store" });
         if (!res.ok) throw new Error("leaderboard_fetch_failed");
         const data = await res.json();
-
         const top = (data && data.top) ? data.top : [];
         loading.classList.add("hidden");
-
         if (!top.length) {
           empty.classList.remove("hidden");
           return;
         }
-
         top.forEach((row, i) => {
           const rank = row.rank || (i + 1);
           const name = row.displayName || "Ẩn danh";
           const attempts = row.attempts ?? 0;
           const rate = row.aboveAvgRate ?? 0;
-
           const el = document.createElement("div");
           el.className = `lb-item r${rank}`;
-
           el.innerHTML = `
             <div class="lb-rank">
               <div class="rank-badge">${rank}</div>
@@ -680,7 +659,6 @@
           `;
           list.appendChild(el);
         });
-
         list.classList.remove("hidden");
       } catch (e) {
         loading.classList.add("hidden");
